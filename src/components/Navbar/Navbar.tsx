@@ -15,7 +15,6 @@ type Props = {};
 
 const Navbar = ({}: Props) => {
   const user = useSelector((state: RootState) => state.user.value);
-
   const router = useRouter().route;
   const dispatch = useDispatch();
   const session = useSession();
@@ -33,8 +32,6 @@ const Navbar = ({}: Props) => {
 
     fetchData();
   }, [session]);
-
-  console.log(user);
 
   const [isOpen, setOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -92,7 +89,9 @@ const Navbar = ({}: Props) => {
               </Link>
             </div>
 
-            <div className="hidden md:block"><h2>LOGO</h2></div>
+            <div className="hidden md:block">
+              <h2>LOGO</h2>
+            </div>
 
             <div className="md:hidden">
               <Squash toggled={isOpen} toggle={setOpen} color="white" />
