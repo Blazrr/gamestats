@@ -3,13 +3,11 @@ import { Inter } from "@next/font/google";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Authentication from "@/components/Index/Authentication";
 import Main from "@/components/Index/Main";
-
+import { AnimatePresence, motion } from "framer-motion";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const session: any = useSession();
-
   return (
     <>
       <Head>
@@ -19,15 +17,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bg-[#282A3A] h-screen">
-        {!session ? (
-          <Authentication />
-        ) : (
-          <>
-            <Main />
-          </>
-        )}
-      </div>
+      <AnimatePresence>
+        <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        >
+        <Main />
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 }

@@ -5,6 +5,7 @@ import { AppProps } from "next/app";
 import "../styles/globals.css";
 import { store } from "../../store";
 import { Provider, useDispatch } from "react-redux";
+import Navbar from "@/components/Navbar/Navbar";
 
 function MyApp({
   Component,
@@ -20,6 +21,7 @@ function MyApp({
         supabaseClient={supabase}
         initialSession={pageProps.initialSession}
       >
+        <Navbar/>
         <Component {...pageProps} />
       </SessionContextProvider>
     </Provider>
