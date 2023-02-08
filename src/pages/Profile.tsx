@@ -4,55 +4,66 @@ import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from "next/router";
 import React from "react";
 import { supabase } from "./../../lib/supabaseClient";
+import { AnimatePresence, motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { RootState } from "store";
+import NameNeeded from "@/components/Profile/NameNeeded";
 
-type Props = {
-
-};
+type Props = {};
 
 const Profile = ({}: Props) => {
-    const supabase = useSupabaseClient()
-    const router = useRouter()
-    const session = useSession()
+  const supabase = useSupabaseClient();
+  const router = useRouter();
+  const user = useSelector((state: RootState) => state.user.value);
+
   const signOut = async () => {
     await supabase.auth.signOut();
-    console.log("test")
-    console.log(session);
-    router.push("/")
-  
+    router.push("/");
   };
+  console.log(user);
 
   return (
-    <div>
-      Prodfile
-      <button onClick={signOut}>Sign Out</button>
-    </div>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        {
+          !user.username ? <NameNeeded/> :
+          <h1 className="text-center text-xl">Welcome back {user.username}</h1>
+        }
+
+        <div>   
+          <button onClick={signOut} className="signOut">
+            Sign Out
+          </button>
+        </div>
+      </motion.div>
+    </AnimatePresence>
   );
 };
 
-export const getServerSideProps = async (ctx:any) => {
-    // Create authenticated Supabase Client
-    const supabase = createServerSupabaseClient(ctx)
-    // Check if we have a session
-    const {
-      data: { session },
-    } = await supabase.auth.getSession()
-  
-    if (!session)
-      return {
-        redirect: {
-          destination: '/Login',
-          permanent: false,
-        },
-      }
-  
-    return {
-      props: {
-        initialSession: session,
-        user: session.user,
-      },
-    }
-  }
+export const getServerSideProps = async (ctx: any) => {
+  const supabase = createServerSupabaseClient(ctx);
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
 
+  if (!session)
+    return {
+      redirect: {
+        destination: "/Login",
+        permanent: false,
+      },
+    };
+
+  return {
+    props: {
+      initialSession: session,
+      user: session.user,
+    },
+  };
+};
 
 export default Profile;
-

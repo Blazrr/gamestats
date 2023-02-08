@@ -5,7 +5,7 @@ import { AppProps } from "next/app";
 import "../styles/globals.css";
 import { store } from "../../store";
 import { Provider, useDispatch } from "react-redux";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/Navbar/Navbar";
 
 function MyApp({
   Component,

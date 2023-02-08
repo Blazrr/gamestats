@@ -29,18 +29,7 @@ const MobilNavbar = ({ setIsShown }: Props) => {
             Home
           </Link>
         </motion.div>
-        <motion.div
-          className="group flex group/item items-center space-x-4"
-          variants={itemVariants}
-        >
-          <Link
-            href={session ? "/Profile" : "/Login"}
-            className="hoverLi"
-            onClick={() => setIsShown(false)}
-          >
-            {session ? "Profile" : "Login"}
-          </Link>
-        </motion.div>
+       
         <motion.div
           className="group flex group/item items-center space-x-4"
           variants={itemVariants}
@@ -51,6 +40,19 @@ const MobilNavbar = ({ setIsShown }: Props) => {
             onClick={() => setIsShown(false)}
           >
             About the Devs
+          </Link>
+        </motion.div>
+        
+        <motion.div
+          className="group flex group/item items-center space-x-4"
+          variants={itemVariants}
+        >
+          <Link
+            href="/Contact"
+            className="hoverLi"
+            onClick={() => setIsShown(false)}
+          >
+            Contact
           </Link>
         </motion.div>
       </motion.ul>
