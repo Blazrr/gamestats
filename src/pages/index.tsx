@@ -19,11 +19,11 @@ export default function Home() {
 
       <AnimatePresence>
         <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
         >
-        <Main />
+          <Main />
         </motion.div>
       </AnimatePresence>
     </>
