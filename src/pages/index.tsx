@@ -4,12 +4,9 @@ import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Authentication from "@/components/Index/Authentication";
 import Main from "@/components/Index/Main";
 
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const session: any = useSession();
-
   return (
     <>
       <Head>
@@ -20,13 +17,7 @@ export default function Home() {
       </Head>
 
       <div className="bg-[#282A3A] h-screen">
-        {!session ? (
-          <Authentication />
-        ) : (
-          <>
-            <Main />
-          </>
-        )}
+        <Main />
       </div>
     </>
   );
