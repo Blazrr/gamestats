@@ -17,11 +17,17 @@ const userprofile = ({ userData }: Props) => {
 
   return (
     <>
+    <div className="bblue h-screen  w-screen">
+
+    <div className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 absolute">
+
+    
+
       {userData.length != 0 ? (
-        <div>
+        <div className=" ">
           {
                 userData[0].lol.summonerName &&
-              <League summonerName={userData[0].lol.summonerName} />
+              <League summoner={userData[0].lol} />
           }
         </div>
       ) : (
@@ -29,6 +35,8 @@ const userprofile = ({ userData }: Props) => {
         <h1 className="text-center text-4xl mt-16 "> 404 <br/>This user doesnt exist</h1>
         </>
       )}
+      </div>
+          </div>
     </>
   );
 };

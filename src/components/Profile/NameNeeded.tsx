@@ -36,7 +36,7 @@ const NameNeeded = (props: Props) => {
       <input
         type="text"
         className="
-      input-username
+      input
       "
         id="exampleFormControlInput1"
         placeholder="Username"

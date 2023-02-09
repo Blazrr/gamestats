@@ -30,7 +30,7 @@ const Profile = ({}: Props) => {
         exit={{ opacity: 0 }}
         className="w-4/5 mx-auto"
       >
-        {!user.username ? (
+        {!user?.username ? (
           <NameNeeded />
         ) : (
           <div className="flex flex-col">

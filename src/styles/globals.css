@@ -38,4 +38,11 @@ body {
 .input{
  @apply block w-full px-3 py-1.5  text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
 }
+
+.purpink {
+ @apply bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500
+}
+.bblue {
+  @apply bg-gradient-to-r from-cyan-500 to-blue-500
+}
 }
