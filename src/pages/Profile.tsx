@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
 import NameNeeded from "@/components/Profile/NameNeeded";
+import SetLeague from "@/components/SetGame/SetLeague";
 
 type Props = {};
 
@@ -20,7 +21,6 @@ const Profile = ({}: Props) => {
     await supabase.auth.signOut();
     router.push("/");
   };
-  console.log(user);
 
   return (
     <AnimatePresence>
@@ -28,13 +28,22 @@ const Profile = ({}: Props) => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
+        className="w-4/5 mx-auto"
       >
-        {
-          !user.username ? <NameNeeded/> :
-          <h1 className="text-center text-xl">Welcome back {user.username}</h1>
-        }
+        {!user.username ? (
+          <NameNeeded />
+        ) : (
+          <div className="flex flex-col">
+            <h1 className="text-center text-xl">
+              Welcome back {user.username}
+            </h1>
+            <div className="mt-8">
+              <SetLeague />
+            </div>
+          </div>
+        )}
 
-        <div>   
+        <div>
           <button onClick={signOut} className="signOut">
             Sign Out
           </button>
