@@ -39,24 +39,25 @@ const League = ({ summoner, showDiv }: Props) => {
   console.log(summoner);
 
   return (
-    <div className="flex">
-      <div
-        className={`p-4 rounded-lg `}
-        style={{ backgroundColor: summoner?.bgColor }}
-      >
-        <div className="relative  h-[250px] w-[250px] ">
-          <Image
-            src={`http://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/${data?.profileIconId}.png`}
-            alt=""
-            layout="fill"
-            objectFit="cover"
-            className="rounded-lg"
-          />
-        </div>
-        <h3 className="text font-semibold mt-2">Lvl. {data?.summonerLevel}</h3>
-        <h1 className="mt-2 font-semibold">{data?.name}</h1>
-        {router == "/Profile" && <SetLeague showDiv={showDiv} />}
+    <div
+      className={`p-4 rounded-lg flex flex-col items-center  `}
+      style={{ backgroundColor: summoner?.bgColor }}
+    >
+      <div className="relative h-36 w-36  md:h-52 md:w-52 ">
+        <Image
+          src={
+            `http://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/${data?.profileIconId}.png` ||
+            "https://aeroclub-issoire.fr/wp-content/uploads/2020/05/image-not-found.jpg"
+          }
+          alt="League of Legends icon"
+          layout="fill"
+          objectFit="cover"
+          className="rounded-lg"
+        />
       </div>
+      <h3 className="text font-semibold mt-2">Lvl. {data?.summonerLevel}</h3>
+      <h1 className="mt-2 font-semibold">{data?.name}</h1>
+      {router == "/Profile" && <SetLeague showDiv={showDiv} />}
     </div>
   );
 };

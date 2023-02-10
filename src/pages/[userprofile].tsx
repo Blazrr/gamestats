@@ -15,7 +15,7 @@ const userprofile = ({ userData }: Props) => {
 
   return (
     <>
-      <div className="bblue h-screen  w-screen">
+      <div className="h-screen  w-screen" style={{backgroundColor: userData[0]?.background ||  "black"}}>
       <h1 className="text-6xl font-bold text-center pt-16">{userData[0]?.username }</h1>
 
         <div className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 fixed">
