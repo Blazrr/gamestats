@@ -6,6 +6,7 @@ import "../styles/globals.css";
 import { store } from "../../store";
 import { Provider, useDispatch } from "react-redux";
 import Navbar from "@/components/Navbar/Navbar";
+import InitUser from "@/components/config/InitUser";
 
 function MyApp({
   Component,
@@ -22,6 +23,7 @@ function MyApp({
         initialSession={pageProps.initialSession}
       >
         <Navbar/>
+        <InitUser/>
         <Component {...pageProps} />
       </SessionContextProvider>
     </Provider>

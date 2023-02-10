@@ -14,29 +14,7 @@ type Props = {};
 
 const Navbar = ({}: Props) => {
   const router = useRouter().route;
-  const dispatch = useDispatch();
   const session = useSession();
-  const user = useSelector((state: RootState) => state.user.value);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const { data, error } = await supabase
-        .from("profiles")
-        .select()
-        .eq("id", session?.user.id);
-      if (data) {
-        dispatch(initUser(data[0]));
-        console.log(data[0]);
-      }
-      if (error) {
-        console.log(error);
-      }
-    };
-    console.log(user?.id);
-    if (user.id == undefined) {
-      fetchData();
-    }
-  }, [session]);
 
   const [isOpen, setOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
