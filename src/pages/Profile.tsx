@@ -2,13 +2,15 @@ import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from "next/router";
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { supabase } from "./../../lib/supabaseClient";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
 import NameNeeded from "@/components/Profile/NameNeeded";
 import SetLeague from "@/components/SetGame/SetLeague";
+import League from "@/components/Profile/League";
+import { GetServerSideProps } from "next";
 
 type Props = {};
 
@@ -16,14 +18,19 @@ const Profile = ({}: Props) => {
   const supabase = useSupabaseClient();
   const router = useRouter();
   const user = useSelector((state: RootState) => state.user.value);
+  console.log(user)
+  
 
   const signOut = async () => {
     await supabase.auth.signOut();
     router.push("/");
   };
 
+
   return (
-    <AnimatePresence>
+    <>
+
+      <AnimatePresence >
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -38,7 +45,7 @@ const Profile = ({}: Props) => {
               Welcome back {user.username}
             </h1>
             <div className="mt-8">
-              <SetLeague />
+              <SetLeague showDiv={true} />
             </div>
           </div>
         )}
@@ -48,12 +55,26 @@ const Profile = ({}: Props) => {
             Sign Out
           </button>
         </div>
+        <div className="mt-32 p-8">
+          <h2 className="text-5xl text-center pb-8">Your current card</h2>
+          <div className="bblue rounded-lg p-16  ">
+            <h1 className="text-6xl font-bold text-center pt-16">
+              {user.username}
+            </h1>
+            <div className="flex items-center justify-center mt-8">
+                <League summoner={user.lol} showDiv={false} />
+            </div>
+          </div>
+        </div>
       </motion.div>
     </AnimatePresence>
+
+    </>
+    
   );
 };
 
-export const getServerSideProps = async (ctx: any) => {
+export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
   const supabase = createServerSupabaseClient(ctx);
   const {
     data: { session },

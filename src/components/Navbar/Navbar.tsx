@@ -8,15 +8,15 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { initUser } from "slices/userSlice";
 import { supabase } from "lib/supabaseClient";
-import { RootState } from "store";
-import { navbarVariants } from "MotionVariants";
 
 type Props = {};
+
 
 const Navbar = ({}: Props) => {
   const router = useRouter().route;
   const dispatch = useDispatch();
   const session = useSession();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,12 +25,14 @@ const Navbar = ({}: Props) => {
         .select()
         .eq("id", session?.user.id);
       if (data) {
-        dispatch(initUser(data[0]));
+         dispatch(initUser(data[0]));
       }
     };
 
     fetchData();
-  }, [session]);
+  }, []);
+
+
 
   const [isOpen, setOpen] = useState(false);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -51,10 +53,10 @@ const Navbar = ({}: Props) => {
     window.addEventListener("scroll", handleScroll);
   });
 
-  console.log(router);
 
   return (
     <>
+    
       {router != "/[userprofile]" && (
         <>
           <AnimatePresence>
@@ -113,5 +115,8 @@ const Navbar = ({}: Props) => {
     </>
   );
 };
+
+
+
 
 export default Navbar;
