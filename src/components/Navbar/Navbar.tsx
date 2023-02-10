@@ -67,7 +67,7 @@ const Navbar = ({}: Props) => {
                   <Link href={"/"} className="NavLinks">
                     Home
                   </Link>
-                  <Link href={"/Devs"} className="NavLinks">
+                  <Link href={"/About"} className="NavLinks">
                     About
                   </Link>
                   <Link href={"/Contact"} className="NavLinks">

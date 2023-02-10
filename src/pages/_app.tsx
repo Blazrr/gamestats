@@ -7,7 +7,8 @@ import { store } from "../../store";
 import { Provider, useDispatch } from "react-redux";
 import Navbar from "@/components/Navbar/Navbar";
 import InitUser from "@/components/config/InitUser";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 function MyApp({
   Component,
   pageProps,
@@ -22,6 +23,7 @@ function MyApp({
         supabaseClient={supabase}
         initialSession={pageProps.initialSession}
       >
+        <ToastContainer/>
         <Navbar/>
         <InitUser/>
         <Component {...pageProps} />
