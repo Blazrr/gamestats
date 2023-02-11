@@ -13,6 +13,7 @@ import ColorPicker from "@/components/Edit/ColorPicker";
 import { changeUser } from "slices/userSlice";
 import { toast } from "react-toastify";
 import CurrCard from "@/components/Profile/CurrCard";
+import Subscription from "@/components/Profile/Subscription";
 
 type Props = {};
 
@@ -35,6 +36,7 @@ const Profile = ({}: Props) => {
           exit={{ opacity: 0 }}
           className="w-4/5 mx-auto"
         >
+          <Subscription/>
           {!user?.username ? (
             <NameNeeded />
           ) : (
