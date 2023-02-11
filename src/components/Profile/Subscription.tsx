@@ -12,7 +12,7 @@ const Subscription = (props: Props) => {
         className="btn"
         onClick={() => {
           checkout({
-            lineItems: [{ price: process.env.NEXT_PUBLIC_STRIPE_PRODUCT_KEY, quantity: 1 }],
+            lineItems: [{ price: `${process.env.NEXT_PUBLIC_STRIPE_PRODUCT_KEY}`, quantity: 1 }],
           });
         }}
       >
