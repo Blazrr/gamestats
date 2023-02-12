@@ -14,6 +14,8 @@ import { changeUser } from "slices/userSlice";
 import { toast } from "react-toastify";
 import CurrCard from "@/components/Profile/CurrCard";
 import Subscription from "@/components/Profile/Subscription";
+import Avatar from "@/components/Profile/Avatar";
+import EditProfile from "@/components/Profile/EditProfile";
 
 type Props = {};
 
@@ -44,6 +46,7 @@ const Profile = ({}: Props) => {
               <h1 className="text-center text-xl">
                 Welcome back {user.username}
               </h1>
+              <EditProfile/>
               <div className="mt-8">
                 <SetLeague showDiv={true} />
               </div>
