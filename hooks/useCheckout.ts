@@ -22,7 +22,5 @@ export async function checkout({ lineItems }: Props) {
     lineItems,
     successUrl: `${window.location.origin}?session_id={CHECKOUT_SESSION_ID}`,
     cancelUrl: "http://localhost:3000/Profile",
-    
   });
 }
-

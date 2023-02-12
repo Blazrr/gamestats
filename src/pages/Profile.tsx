@@ -36,7 +36,7 @@ const Profile = ({}: Props) => {
           exit={{ opacity: 0 }}
           className="w-4/5 mx-auto"
         >
-          <Subscription/>
+          {/* <Subscription/> */}
           {!user?.username ? (
             <NameNeeded />
           ) : (

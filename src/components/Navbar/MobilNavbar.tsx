@@ -60,10 +60,8 @@ const MobilNavbar = ({ setIsShown }: Props) => {
         className="justify-center flex  bottom-0 w-full fixed space-x-4 mb-10"
         variants={itemVariants}
       >
-        <FaTwitter className="socials " />
-        <FaLinkedin className="socials " />
-        <FaTelegram className="socials " />
-        <FaYoutube className="socials " />
+        <a href="https://www.linkedin.com/in/sami-el-mhamedi-8284621b4/"><FaLinkedin className="socials" /></a>
+
       </motion.footer>
     </motion.div>
   );
