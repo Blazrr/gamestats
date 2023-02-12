@@ -35,6 +35,16 @@ const Contact = (props: Props) => {
           },
           (error) => {
             console.log(error.text);
+            setLoading(false);
+            toast("There was a problem sending your message", {
+              icon: "❌",
+              autoClose: 2000,
+              hideProgressBar: true,
+              pauseOnHover: false,
+              theme: "dark",
+              role: "alert",
+            });
+
           }
         );
     } else {
