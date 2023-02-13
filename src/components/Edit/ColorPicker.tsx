@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //@ts-ignore
 import { CirclePicker } from "react-color";
 
-type Props = {setColor: (color: string) => void};
+type Props = {setColor:any};
 interface circlePicker {
   hex:string
 }
