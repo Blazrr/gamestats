@@ -20,13 +20,10 @@ const InitUser = (props: Props) => {
           .eq("id", session?.user.id);
         if (data) {
           dispatch(initUser(data[0]));
-          console.log(data[0]);
         }
         if (error) {
-          console.log(error);
         }
       };
-      console.log(user?.id);
       if (user.id == undefined) {
         fetchData();
       }

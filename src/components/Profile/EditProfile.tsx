@@ -21,15 +21,15 @@ const EditProfile = (props: Props) => {
        
       .eq("id", user.id);
     if (error) {
-      alert(error);
+      alert("Your username is already taken");
       return;
     } else {
       dispatch(changeUser({ ...user, avatar_url: avatar,username: username }));
+      //Delete old avatars
       const { data, error } = await supabase.storage
         .from("avatars")
         .list(user.id);
       let tmp: any = [];
-      //Delete old avatars
 
       data?.map((item) => {
         if (!`${avatar}`.includes(item.name)) {

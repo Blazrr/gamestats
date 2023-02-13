@@ -10,7 +10,7 @@ const Contact = (props: Props) => {
   const [input, setInput] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
-  const sendEmail = (e: any) => {
+  const sendEmail = (e:any) => {
     e.preventDefault();
     if (input.length != 0) {
       setLoading(true);
@@ -34,7 +34,6 @@ const Contact = (props: Props) => {
             setLoading(false);
           },
           (error) => {
-            console.log(error.text);
             setLoading(false);
             toast("There was a problem sending your message", {
               icon: "❌",

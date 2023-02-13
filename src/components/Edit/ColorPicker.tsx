@@ -3,13 +3,17 @@ import React, { useState } from "react";
 //@ts-ignore
 import { CirclePicker } from "react-color";
 
-type Props = {setColor: any};
+type Props = {setColor: (color: string) => void};
+interface circlePicker {
+  hex:string
+}
+
 
 
 const ColorPicker = ({setColor}:Props) => {
   const [open, setOpen] = useState(false);
 
-  const setPickedColor = (e: any) => {
+  const setPickedColor = (e: circlePicker) => {
     console.log(e);
     setColor(e.hex);
   };
@@ -27,7 +31,7 @@ const ColorPicker = ({setColor}:Props) => {
           animate={{opacity:1}}
           exit={{opacity:0}}
           >
-          <CirclePicker onChange={(e: any) => setPickedColor(e)} />
+          <CirclePicker onChange={(e: circlePicker) => setPickedColor(e)} />
         </motion.div>
       )}
       </AnimatePresence>

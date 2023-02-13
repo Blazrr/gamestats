@@ -28,7 +28,6 @@ const League = ({ summoner, showDiv }: Props) => {
         `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner?.summonerName}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
       );
       const res = await tmp.json();
-      console.log(res);
       setData(res);
     };
     if (summoner != undefined) {
@@ -36,7 +35,6 @@ const League = ({ summoner, showDiv }: Props) => {
     }
   }, [summoner]);
 
-  console.log(summoner);
 
   return (
     <div
