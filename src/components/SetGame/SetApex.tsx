@@ -1,52 +1,51 @@
 import { AnimatePresence, motion } from "framer-motion";
-import useFetch from "hooks/useFetch";
 import { supabase } from "lib/supabaseClient";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { changeUser } from "slices/userSlice";
 import { RootState } from "store";
 import ColorPicker from "../Edit/ColorPicker";
 
-type Props = { showDiv: boolean };
+type Props = {};
 
-const SetLeague = ({ showDiv }: Props) => {
-  const user = useSelector((state: RootState) => state.user.value);
-  const [username, setUsername] = useState(user?.lol?.summonerName);
+const SetApex = (props: Props) => {
+    const user = useSelector((state: RootState) => state.user.value);
+    const [username, setUsername] = useState(user?.apex?.username);
   const dispatch = useDispatch();
   const [color, setColor] = useState(user?.lol?.bgColor || "#000000");
   const [open, setOpen] = useState(false);
 
   const handleSubmit = async () => {
-    try {
-      const response = await fetch(
-        `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${username}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
+    console.log("test");
+
+    const response = await fetch(
+      `https://api.mozambiquehe.re/bridge?auth=${process.env.NEXT_PUBLIC_APEX_KEY}&player=${username}&platform=PC`
+    );
+    const data = await response.json();
+    console.log(data)
+    if (!data.Error) {
+      const { error } = await supabase
+        .from("profiles")
+        .update({ apex: { username: username, bgColor: color } })
+        .eq("id", user.id);
+      dispatch(
+        changeUser({
+          ...user,
+          apex: { username: username, bgColor: color },
+        })
       );
-      const data = await response.json();
-      if (data && username != "") {
-        const { error } = await supabase
-          .from("profiles")
-          .update({ lol: { summonerName: username, bgColor: color } })
-          .eq("id", user.id);
-        dispatch(
-          changeUser({
-            ...user,
-            lol: { summonerName: username, bgColor: color },
-          })
-        );
-        setOpen(false);
-        toast("You have succesfully changed your card", {
-          icon: "✅",
-          autoClose: 2000,
-          hideProgressBar: true,
-          pauseOnHover: false,
-          theme: "dark",
-          role: "alert",
-        });
-      }
-    } catch (error) {
-      toast("Please enter a Valid Summoner name", {
+      setOpen(false);
+      toast("You have succesfully changed your card", {
+        icon: "✅",
+        autoClose: 2000,
+        hideProgressBar: true,
+        pauseOnHover: false,
+        theme: "dark",
+        role: "alert",
+      });
+    } else {
+      toast("Please set a valid username", {
         icon: "❌",
         autoClose: 2000,
         hideProgressBar: true,
@@ -59,24 +58,23 @@ const SetLeague = ({ showDiv }: Props) => {
 
   return (
     <div className="flex flex-col">
-      {user?.lol?.summonerName && showDiv ? (
+      {user?.apex?.username ? (
         <p>
-          Your current Summoner Name is{" "}
-          <span className="underline font-bold">{user.lol.summonerName}</span>.{" "}
+          Your current Apex Name is{" "}
+          <span className="underline font-bold">{user.apex.username}</span>.{" "}
           <br /> You can still change your infos right down
         </p>
       ) : (
-        !user?.lol?.summonerName &&
-        showDiv && (
+        !user?.apex?.username && (
           <p>
-            You didnt set up a League profile. <br /> You can still change your
+            You didnt set up an Apex profile. <br /> You can still change your
             infos right down
           </p>
         )
       )}
       <div className="">
         <button className="btn mt-6" onClick={() => setOpen(true)}>
-          Edit League Profile
+          Edit Apex Profile
         </button>
       </div>
       <AnimatePresence>
@@ -95,7 +93,7 @@ const SetLeague = ({ showDiv }: Props) => {
                 type="text"
                 className="input max-w-[300px] mt-2"
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder={user?.lol?.summonerName}
+                placeholder={user?.apex?.username}
               />
               <p>Your card color will be {color} </p>
               <ColorPicker setColor={setColor} />
@@ -114,4 +112,4 @@ const SetLeague = ({ showDiv }: Props) => {
   );
 };
 
-export default SetLeague;
+export default SetApex;

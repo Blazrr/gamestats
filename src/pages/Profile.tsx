@@ -7,14 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import NameNeeded from "@/components/Profile/NameNeeded";
 import SetLeague from "@/components/SetGame/SetLeague";
-import League from "@/components/Profile/League";
 import { GetServerSideProps } from "next";
-import ColorPicker from "@/components/Edit/ColorPicker";
-import { changeUser } from "slices/userSlice";
-import { toast } from "react-toastify";
+
 import CurrCard from "@/components/Profile/CurrCard";
-import Avatar from "@/components/Profile/Avatar";
 import EditProfile from "@/components/Profile/EditProfile";
+import SetApex from "@/components/SetGame/SetApex";
 
 type Props = {};
 
@@ -47,6 +44,7 @@ const Profile = ({}: Props) => {
               <EditProfile/>
               <div className="mt-8">
                 <SetLeague showDiv={true} />
+                <SetApex/>
               </div>
             </div>
           )}
