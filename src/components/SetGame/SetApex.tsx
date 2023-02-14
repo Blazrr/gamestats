@@ -25,16 +25,17 @@ const SetApex = ({showDiv}: Props) => {
     );
     const data = await response.json();
     if (!data.Error) {
+      console.log(data)
       const { error } = await supabase
         .from("profiles")
         .update({
-          apex: { username: username, bgColor: color, platform: platform },
+          apex: { username: username, bgColor: color, platform: platform,uid:data?.global?.uid },
         })
         .eq("id", user.id);
       dispatch(
         changeUser({
           ...user,
-          apex: { username: username, bgColor: color, platform: platform },
+          apex: { username: username, bgColor: color, platform: platform,uid:data?.global?.uid },
         })
       );
       setOpen(false);
