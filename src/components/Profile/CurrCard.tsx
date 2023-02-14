@@ -1,11 +1,12 @@
 import ColorPicker from "../Edit/ColorPicker";
-import League from "./League";
+import League from "../GameCards/League";
 import { useState } from "react";
 import { supabase } from "lib/supabaseClient";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser } from "slices/userSlice";
 import { toast } from "react-toastify";
 import { RootState } from "store";
+import Apex from "../GameCards/Apex";
 
 type Props = {};
 
@@ -53,7 +54,8 @@ const CurrCard = (props: Props) => {
           {user.username}
         </h1>
         <div className="flex items-center justify-center mt-8">
-          {user.lol != null && <League summoner={user.lol} showDiv={false} />}
+          {user.lol != null && <League user={user} showDiv={false} />}
+          {user.apex != null && <Apex showDiv={false} user={user}/>}
         </div>
       </div>
     </div>

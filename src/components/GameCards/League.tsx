@@ -4,42 +4,49 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { supabase } from "lib/supabaseClient";
 import { LeagueProfile } from "utils/league";
-import { lol } from "utils/user";
+import { lol, user } from "utils/user";
 import { useRouter } from "next/router";
 import SetLeague from "../SetGame/SetLeague";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
+import { AnimatePresence,motion } from "framer-motion";
 
 type Props = {
   data?: LeagueProfile | null;
-  summoner: lol;
+  user: user;
   showDiv: boolean;
 };
 
-const League = ({ summoner, showDiv }: Props) => {
+const League = ({ user, showDiv }: Props) => {
   const router = useRouter().route;
-  const user = useSelector((state: RootState) => state.user.value);
-  const [seed, setSeed] = useState(0);
   const [data, setData] = useState<LeagueProfile | null>();
+  console.log(showDiv)
 
   useEffect(() => {
     const fetchData = async () => {
       const tmp = await fetch(
-        `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${summoner?.summonerName}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
+        `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${user?.lol?.summonerName}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
       );
       const res = await tmp.json();
       setData(res);
     };
-    if (summoner != undefined) {
+    if (user != undefined) {
       fetchData();
     }
-  }, [summoner]);
+  }, [user]);
 
 
   return (
-    <div
+    <>
+    {
+      data != undefined && 
+      <AnimatePresence>
+    <motion.div
       className={`p-4 rounded-lg flex flex-col items-center  `}
-      style={{ backgroundColor: summoner?.bgColor }}
+      style={{ backgroundColor: user?.lol?.bgColor }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
       <div className="relative h-36 w-36  md:h-52 md:w-52 ">
         <Image
@@ -56,7 +63,10 @@ const League = ({ summoner, showDiv }: Props) => {
       <h3 className="text font-semibold mt-2">Lvl. {data?.summonerLevel}</h3>
       <h1 className="mt-2 font-semibold">{data?.name}</h1>
       {router == "/Profile" && <SetLeague showDiv={showDiv} />}
-    </div>
+    </motion.div>
+    </AnimatePresence>
+        }
+        </>
   );
 };
 

@@ -44,7 +44,7 @@ const Profile = ({}: Props) => {
               <EditProfile/>
               <div className="mt-8">
                 <SetLeague showDiv={true} />
-                <SetApex/>
+                <SetApex showDiv={true}/>
               </div>
             </div>
           )}

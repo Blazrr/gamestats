@@ -7,32 +7,34 @@ import { changeUser } from "slices/userSlice";
 import { RootState } from "store";
 import ColorPicker from "../Edit/ColorPicker";
 
-type Props = {};
+type Props = { showDiv: boolean };
 
-const SetApex = (props: Props) => {
-    const user = useSelector((state: RootState) => state.user.value);
-    const [username, setUsername] = useState(user?.apex?.username);
+const SetApex = ({showDiv}: Props) => {
+  const user = useSelector((state: RootState) => state.user.value);
+  const [username, setUsername] = useState(user?.apex?.username);
   const dispatch = useDispatch();
-  const [color, setColor] = useState(user?.lol?.bgColor || "#000000");
+  const [color, setColor] = useState(user?.apex?.bgColor || "#000000");
   const [open, setOpen] = useState(false);
+  const [platform, setPlatform] = useState(user?.apex?.platform);
+
 
   const handleSubmit = async () => {
-    console.log("test");
 
     const response = await fetch(
-      `https://api.mozambiquehe.re/bridge?auth=${process.env.NEXT_PUBLIC_APEX_KEY}&player=${username}&platform=PC`
+      `https://api.mozambiquehe.re/bridge?auth=${process.env.NEXT_PUBLIC_APEX_KEY}&player=${username}&platform=${platform}`
     );
     const data = await response.json();
-    console.log(data)
     if (!data.Error) {
       const { error } = await supabase
         .from("profiles")
-        .update({ apex: { username: username, bgColor: color } })
+        .update({
+          apex: { username: username, bgColor: color, platform: platform },
+        })
         .eq("id", user.id);
       dispatch(
         changeUser({
           ...user,
-          apex: { username: username, bgColor: color },
+          apex: { username: username, bgColor: color, platform: platform },
         })
       );
       setOpen(false);
@@ -45,7 +47,7 @@ const SetApex = (props: Props) => {
         role: "alert",
       });
     } else {
-      toast("Please set a valid username", {
+      toast("Please set a valid profile", {
         icon: "❌",
         autoClose: 2000,
         hideProgressBar: true,
@@ -58,14 +60,14 @@ const SetApex = (props: Props) => {
 
   return (
     <div className="flex flex-col">
-      {user?.apex?.username ? (
+      {user?.apex.username && showDiv ? (
         <p>
           Your current Apex Name is{" "}
           <span className="underline font-bold">{user.apex.username}</span>.{" "}
           <br /> You can still change your infos right down
         </p>
       ) : (
-        !user?.apex?.username && (
+        !user?.apex.username && showDiv && (
           <p>
             You didnt set up an Apex profile. <br /> You can still change your
             infos right down
@@ -88,13 +90,28 @@ const SetApex = (props: Props) => {
               className="mt-6 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black p-8 rounded-lg z-30 min-w-[300px]"
               style={{ backgroundColor: color }}
             >
-              <label htmlFor="">League Summoner name</label>
-              <input
-                type="text"
-                className="input max-w-[300px] mt-2"
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder={user?.apex?.username}
-              />
+              <div className="flex flex-col">
+                <label htmlFor="username">Apex Summoner name</label>
+                <input
+                  type="text"
+                  className="input max-w-[300px] mt-2"
+                  onChange={(e) => setUsername(e.target.value)}
+                  placeholder={user?.apex?.username}
+                  id="username"
+                />
+              </div>
+              <div className="flex flex-col mt-4">
+                <label htmlFor="Platform">Select your Platform</label>
+                <select
+                  value={platform}
+                  className="btn text-center"
+                  onChange={(e: any) => setPlatform(e.target.value)}
+                >
+                  <option value="PC">PC</option>
+                  <option value="PS4">PS4</option>
+                </select>
+              </div>
+
               <p>Your card color will be {color} </p>
               <ColorPicker setColor={setColor} />
               <button className="btn mt-4" onClick={handleSubmit}>
