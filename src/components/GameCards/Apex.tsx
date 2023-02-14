@@ -31,7 +31,7 @@ const Apex = ({showDiv,user}: Props) => {
         fetchData();
       }
 
-  }, []);
+  }, [user]);
 
   return (
     <>

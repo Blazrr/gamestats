@@ -15,7 +15,7 @@ const SetApex = ({showDiv}: Props) => {
   const dispatch = useDispatch();
   const [color, setColor] = useState(user?.apex?.bgColor || "#000000");
   const [open, setOpen] = useState(false);
-  const [platform, setPlatform] = useState(user?.apex?.platform);
+  const [platform, setPlatform] = useState(user?.apex?.platform || "PC");
 
 
   const handleSubmit = async () => {
@@ -60,7 +60,7 @@ const SetApex = ({showDiv}: Props) => {
 
   return (
     <div className="flex flex-col">
-      {user?.apex.username && showDiv ? (
+      {user?.apex?.username && showDiv ? (
         <p>
           Your current Apex Name is{" "}
           <span className="underline font-bold">{user.apex.username}</span>.{" "}
