@@ -22,7 +22,8 @@ const Apex = ({showDiv,user}: Props) => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://api.mozambiquehe.re/bridge?auth=${process.env.NEXT_PUBLIC_APEX_KEY}&player=${user.apex.username}&platform=${user.apex.platform}`
+        `
+        https://api.mozambiquehe.re/bridge?auth=${process.env.NEXT_PUBLIC_APEX_KEY}&uid=${user.apex.uid}&platform=${user.apex.platform}`
       );
       const tmp = await response.json();
       setData(tmp);
@@ -31,12 +32,14 @@ const Apex = ({showDiv,user}: Props) => {
         fetchData();
       }
 
-  }, []);
+  }, [user]);
+
+  console.log(data)
 
   return (
     <>
     {
-        data != undefined && 
+        data?.legends != undefined && 
         <AnimatePresence>
       <motion.div
         className={`p-4 rounded-lg flex flex-col items-center  `}

@@ -7,6 +7,7 @@ export interface apex {
   bgColor: string;
   username: string;
   platform: string;
+  uid:string;
 }
 export interface user {
   avatar_url?: string;
