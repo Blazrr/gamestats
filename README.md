@@ -21,7 +21,7 @@ To run this project, install it locally using npm:
 $ cd ../gamestats
 $ npm install
 $ npm run dev
-$ Contact my for the API keys
+$ Contact me for the API keys
 ```
 or go to :
 https://gamestats-snowy.vercel.app/
