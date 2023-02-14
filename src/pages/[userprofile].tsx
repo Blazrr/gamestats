@@ -21,7 +21,7 @@ const userprofile = ({ userData }: Props) => {
 
         <div className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 fixed">
           {userData.length != 0 ? (
-            <div className="flex items-center justify-center gap-4 ">
+            <div className="flex items-center justify-center gap-4 flex-wrap ">
               {userData[0]?.lol && (
                 <League user={userData[0]} showDiv={false} />
               )}
