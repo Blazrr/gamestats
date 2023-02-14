@@ -36,7 +36,7 @@ const Apex = ({showDiv,user}: Props) => {
   return (
     <>
     {
-        data != undefined && 
+        data?.legends != undefined && 
         <AnimatePresence>
       <motion.div
         className={`p-4 rounded-lg flex flex-col items-center  `}

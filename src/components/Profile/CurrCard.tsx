@@ -53,7 +53,7 @@ const CurrCard = (props: Props) => {
         <h1 className="text-6xl font-bold text-center pt-16">
           {user.username}
         </h1>
-        <div className="flex items-center justify-center mt-8">
+        <div className="flex items-center justify-center mt-8 gap-4">
           {user.lol != null && <League user={user} showDiv={false} />}
           {user.apex != null && <Apex showDiv={false} user={user}/>}
         </div>
