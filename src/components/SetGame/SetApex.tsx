@@ -61,14 +61,16 @@ const SetApex = ({showDiv}: Props) => {
 
   return (
     <div className="flex flex-col">
-      {user?.apex?.username && showDiv ? (
+
+      {user?.apex?.username  && showDiv ? (
+
         <p>
           Your current Apex Name is{" "}
-          <span className="underline font-bold">{user.apex.username}</span>.{" "}
+          <span className="underline font-bold">{user?.apex.username}</span>.{" "}
           <br /> You can still change your infos right down
         </p>
       ) : (
-        !user?.apex.username && showDiv && (
+        !user?.apex && showDiv && (
           <p>
             You didnt set up an Apex profile. <br /> You can still change your
             infos right down
