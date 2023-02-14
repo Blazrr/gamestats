@@ -55,7 +55,7 @@ const Profile = ({}: Props) => {
             </button>
           </div>
 
-          {user.username != null && <CurrCard />}
+          {user?.username != null && <CurrCard />}
         </motion.div>
       </AnimatePresence>
     </>
