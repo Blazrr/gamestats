@@ -11,7 +11,6 @@ const InitUser = (props: Props) => {
     const dispatch = useDispatch();
     const session = useSession();
     const user = useSelector((state: RootState) => state.user.value);
-  
     useEffect(() => {
       const fetchData = async () => {
         const { data, error } = await supabase
@@ -19,15 +18,17 @@ const InitUser = (props: Props) => {
           .select()
           .eq("id", session?.user.id);
         if (data) {
+          console.log(data);
           dispatch(initUser(data[0]));
         }
         if (error) {
+          console.log(error)
         }
       };
-      if (user.id == undefined) {
+      if (user?.length == 0 ) {
         fetchData();
       }
-    }, [session]);
+    }, [session,[]]);
   
   return (
     <div></div>
