@@ -25,6 +25,11 @@ const Profile = ({}: Props) => {
     router.push("/");
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(`https://gamestats-snowy.vercel.app/${user.username}`);
+  };
+  
+
   return (
     <>
       <AnimatePresence>
@@ -37,16 +42,23 @@ const Profile = ({}: Props) => {
           {!user?.username ? (
             <NameNeeded />
           ) : (
-            <div className="flex flex-col">
-              <h1 className="text-center text-xl">
+            <>
+            <div className="flex flex-col items-center">
+              <h1 className="text-center text-2xl">
                 Welcome back {user.username}
               </h1>
-              <EditProfile/>
-              <div className="mt-8">
-                <SetLeague showDiv={true} />
-                <SetApex showDiv={true}/>
+              <div className="mt-4 bg-slate-300 p-2 rounded space-x-2">
+                <span className="text-black">https://gamestats-snowy.vercel.app/{user.username}</span>
+                <button className="btn" onClick={handleCopy}>Copy</button>
               </div>
+              <EditProfile/>
+             
             </div>
+             <div className="mt-8 flex gap-6 flex-wrap items-center justify-center">
+             <SetLeague showDiv={true} />
+             <SetApex showDiv={true}/>
+           </div>
+           </>
           )}
 
           <div>

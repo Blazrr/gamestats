@@ -67,13 +67,12 @@ const SetApex = ({showDiv}: Props) => {
         <p>
           Your current Apex Name is{" "}
           <span className="underline font-bold">{user?.apex.username}</span>.{" "}
-          <br /> You can still change your infos right down
+          <br /> You can still Edit your Apex Profile
         </p>
       ) : (
         !user?.apex && showDiv && (
           <p>
-            You didnt set up an Apex profile. <br /> You can still change your
-            infos right down
+            Set up An Apex Profile
           </p>
         )
       )}

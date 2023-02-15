@@ -63,14 +63,13 @@ const SetLeague = ({ showDiv }: Props) => {
         <p>
           Your current Summoner Name is{" "}
           <span className="underline font-bold">{user.lol.summonerName}</span>.{" "}
-          <br /> You can still change your infos right down
+          <br /> You can still Edit your Apex Profile
         </p>
       ) : (
         !user?.lol?.summonerName &&
         showDiv && (
           <p>
-            You didnt set up a League profile. <br /> You can still change your
-            infos right down
+            Set up A League of Legends Profile
           </p>
         )
       )}

@@ -45,15 +45,22 @@ const EditProfile = (props: Props) => {
     }
   };
   return (
-    <div className="mx-auto flex flex-col">
+    <div className="mx-auto flex flex-col rounded-lg p-4 ">
+      <div className="flex items-center justify-center gap-6 flex-wrap">
+
       <Avatar setAvatar={setAvatar} />
+      <div>
+      <label htmlFor="username">Username</label>
       <input
         type="text"
+        id="username"
         placeholder={user.username}
         onChange={(e) => setUsername(e.target.value)}
-        className="input mt-8 max-w-[200px] "
+        className="input mt-4 max-w-[200px] "
       />
-      <button className="btn mt-4" onClick={saveChanges}>
+      </div>
+      </div>
+      <button className="btn mt-8" onClick={saveChanges}>
         Save changes
       </button>
     </div>
