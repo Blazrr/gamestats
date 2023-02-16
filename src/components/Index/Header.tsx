@@ -11,6 +11,7 @@ const Header = (props: Props) => {
           in 1 Link !
         </span>
       </h1>
+      <p className="text-center text-xl">Featuring many of your favourite games</p>
     </div>
   );
 };
