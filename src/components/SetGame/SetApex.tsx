@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { supabase } from "lib/supabaseClient";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -9,7 +10,7 @@ import ColorPicker from "../Edit/ColorPicker";
 
 type Props = { showDiv: boolean };
 
-const SetApex = ({showDiv}: Props) => {
+const SetApex = ({ showDiv }: Props) => {
   const user = useSelector((state: RootState) => state.user.value);
   const [username, setUsername] = useState(user?.apex?.username);
   const dispatch = useDispatch();
@@ -17,25 +18,33 @@ const SetApex = ({showDiv}: Props) => {
   const [open, setOpen] = useState(false);
   const [platform, setPlatform] = useState(user?.apex?.platform || "PC");
 
-
   const handleSubmit = async () => {
-
     const response = await fetch(
       `https://api.mozambiquehe.re/bridge?auth=${process.env.NEXT_PUBLIC_APEX_KEY}&player=${username}&platform=${platform}`
     );
     const data = await response.json();
     if (!data.Error) {
-      console.log(data)
+      console.log(data);
       const { error } = await supabase
         .from("profiles")
         .update({
-          apex: { username: username, bgColor: color, platform: platform,uid:data?.global?.uid },
+          apex: {
+            username: username,
+            bgColor: color,
+            platform: platform,
+            uid: data?.global?.uid,
+          },
         })
         .eq("id", user.id);
       dispatch(
         changeUser({
           ...user,
-          apex: { username: username, bgColor: color, platform: platform,uid:data?.global?.uid },
+          apex: {
+            username: username,
+            bgColor: color,
+            platform: platform,
+            uid: data?.global?.uid,
+          },
         })
       );
       setOpen(false);
@@ -61,26 +70,18 @@ const SetApex = ({showDiv}: Props) => {
 
   return (
     <div className="flex flex-col">
-
-      {user?.apex?.username  && showDiv ? (
-
-        <p>
-          Your current Apex Name is{" "}
-          <span className="underline font-bold">{user?.apex.username}</span>.{" "}
-          <br /> You can still Edit your Apex Profile
-        </p>
-      ) : (
-        !user?.apex && showDiv && (
-          <p>
-            Set up An Apex Profile
-          </p>
-        )
+      {showDiv && (
+        <div className="relative h-16 w-16" onClick={() => setOpen(true)}>
+          <Image
+            src="/apex.jpg"
+            alt="League of Legends icon"
+            layout="fill"
+            objectFit="cover"
+            className="rounded cursor-pointer hover:scale-105 transition-all"
+          />
+        </div>
       )}
-      <div className="">
-        <button className="btn mt-6" onClick={() => setOpen(true)}>
-          Edit Apex Profile
-        </button>
-      </div>
+
       <AnimatePresence>
         {open && (
           <motion.div

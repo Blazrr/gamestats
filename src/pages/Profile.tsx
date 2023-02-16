@@ -12,7 +12,6 @@ import { GetServerSideProps } from "next";
 import CurrCard from "@/components/Profile/CurrCard";
 import EditProfile from "@/components/Profile/EditProfile";
 import SetApex from "@/components/SetGame/SetApex";
-import EditCards from "@/components/Profile/EditCards";
 
 type Props = {};
 
@@ -55,7 +54,7 @@ const Profile = ({}: Props) => {
               <EditProfile/>
              
             </div>
-           {/* <EditCards/> */}
+            <h3 className="text-center text-3xl mt-6">Edit your Cards</h3>
              <div className="mt-8 flex gap-6 flex-wrap items-center justify-center">
              <SetLeague showDiv={true} />
              <SetApex showDiv={true}/>

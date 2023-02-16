@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import useFetch from "hooks/useFetch";
 import { supabase } from "lib/supabaseClient";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -59,25 +60,16 @@ const SetLeague = ({ showDiv }: Props) => {
 
   return (
     <div className="flex flex-col">
-      {user?.lol?.summonerName && showDiv ? (
-        <p>
-          Your current Summoner Name is{" "}
-          <span className="underline font-bold">{user.lol.summonerName}</span>.{" "}
-          <br /> You can still Edit your Apex Profile
-        </p>
-      ) : (
-        !user?.lol?.summonerName &&
-        showDiv && (
-          <p>
-            Set up A League of Legends Profile
-          </p>
-        )
-      )}
-      <div className="">
-        <button className="btn mt-6" onClick={() => setOpen(true)}>
-          Edit League Profile
-        </button>
+ {
+  showDiv && 
+        <div className='relative h-16 w-16' onClick={() => setOpen(true)}>
+        <Image src="/lol.png" alt="League of Legends icon"
+          layout="fill"
+          objectFit="cover"
+          className='rounded cursor-pointer hover:scale-105 transition-all' />
       </div>
+ }
+
       <AnimatePresence>
         {open && (
           <motion.div
