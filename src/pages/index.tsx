@@ -4,6 +4,7 @@ import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Authentication from "@/components/Index/Authentication";
 import Main from "@/components/Index/Main";
 import { AnimatePresence, motion } from "framer-motion";
+import GlitchedTitle from "@/components/Commons/GlitchedTitle";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
+          <GlitchedTitle textValue="GeeKard"/>
           <Main />
         </motion.div>
       </AnimatePresence>
