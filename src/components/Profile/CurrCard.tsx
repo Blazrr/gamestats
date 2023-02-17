@@ -8,56 +8,39 @@ import { toast } from "react-toastify";
 import { RootState } from "store";
 import Apex from "../GameCards/Apex";
 import GlitchedTitle from "../Commons/GlitchedTitle";
+import { useRouter } from "next/router";
+import Image from "next/image";
 
 type Props = {};
 
 const CurrCard = (props: Props) => {
-  const [color, setColor] = useState();
-  const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.value);
-
-  const saveChanges = async () => {
-    const { error } = await supabase
-      .from("profiles")
-      .update({ background: color })
-      .eq("id", user.id);
-    dispatch(
-      changeUser({
-        ...user,
-        background: color,
-      })
-    );
-    toast("You have succesfully changed your card", {
-      icon: "✅",
-      autoClose: 2000,
-      hideProgressBar: true,
-      pauseOnHover: false,
-      theme: "dark",
-      role: "alert",
-    });
-  };
+  const router = useRouter().route;
+  console.log(user);
 
   return (
-    <div className="mt-32 p-8">
-      <h2 className="text-5xl text-center pb-8">Your current card</h2>
-      <div
-        className=" rounded-lg p-16 relative"
-        style={{ backgroundColor: color || user.background || "black" }}
-      >
-        <div className="absolute top-6 left-1/2 -translate-x-1/2 transform">
-          <ColorPicker setColor={setColor} />
-        </div>
-        <button className="btn absolute bottom-8 right-8" onClick={saveChanges}>
-          save changes
-        </button>
-
-        <div className=" pt-16">
-          <GlitchedTitle textValue={user.username}/>
-        </div>
-        <div className="flex items-center justify-center mt-8 gap-4 flex-col">
-          {user.lol != null && <League user={user} showDiv={false} />}
-          {user.apex != null && <Apex showDiv={false} user={user}/>}
-        </div>
+    <div
+      className={`purpink p-16 ${router == "/Profile" ? "rounded-lg mt-16" : "h-screen w-screen"} `}
+    
+    >
+  
+      <div className=" flex items-center space-x-4 justify-center ">
+        <GlitchedTitle textValue={user?.username} />
+        {user?.avatar_url && (
+           <div className="relative  h-[104px] aspect-square ">
+           <Image
+             src={user?.avatar_url}
+             alt="User Avatar"
+             layout="fill"
+             objectFit="cover"
+             className="rounded-lg"
+           />
+         </div>
+        )}
+      </div>
+      <div className="flex items-center justify-center mt-16 gap-4 flex-col">
+        {user.lol != null && <League user={user} showDiv={false} />}
+        {user.apex != null && <Apex showDiv={false} user={user} />}
       </div>
     </div>
   );
