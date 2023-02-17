@@ -35,7 +35,7 @@ const GlitchedTitle = ({textValue}: Props) => {
   
 
   return (
-    <div className="flex justify-center mb-4">
+    <div className="flex justify-center ">
       <span
         className="bg-purple-300 p-4 text-7xl font-bold rounded-lg"
         onMouseEnter={(event:any) => toRandom(event)}
