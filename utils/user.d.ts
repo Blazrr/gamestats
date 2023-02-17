@@ -1,6 +1,7 @@
 export interface lol {
   bgColor: string;
   summonerName: string;
+  server:string;
 }
 
 export interface apex {

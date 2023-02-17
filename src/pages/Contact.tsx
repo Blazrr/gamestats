@@ -79,6 +79,7 @@ const Contact = (props: Props) => {
         >
           <form className="mt-8 space-y-8 w-4/5 max-w-[800px]" ref={form}>
             <h2 className="text-center text-4xl font-semibold underline">contact form</h2>
+            <p className="text-center">Share me your opinions and features to add &#128522;</p>
             <div className="space-y-2">
               <label htmlFor="name">Name </label>
               <input type="text" className="input" name="user_name" id="name" />

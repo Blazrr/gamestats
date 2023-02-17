@@ -34,7 +34,6 @@ const League = ({ user, showDiv }: Props) => {
     }
   }, [user]);
 
-  console.log(data)
 
   return (
     <>
@@ -42,7 +41,7 @@ const League = ({ user, showDiv }: Props) => {
       data != undefined && 
       <AnimatePresence>
     <motion.div
-      className="p-4 rounded-lg flex  items-center w-[300px]  "
+      className="p-4 rounded-lg flex  items-center w-[300px] justify-between "
       style={{ backgroundColor: user?.lol?.bgColor }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -60,8 +59,8 @@ const League = ({ user, showDiv }: Props) => {
           className="rounded-lg"
         />
       </div>
-      <h3 className="text font-semibold ml-2">Lvl.{data?.summonerLevel}</h3>
-      <a target="_blank" href={`https://www.op.gg/summoners/${user.lol?.server}/${user.lol?.summonerName}`}  className=" font-semibold ml-2 underline" rel="noopener noreferrer">{data?.name}</a>
+      <h3 className="text font-semibold ">Lvl.{data?.summonerLevel}</h3>
+      <a target="_blank" href={`https://www.op.gg/summoners/${user.lol?.server}/${user.lol?.summonerName}`}  className=" font-semibold  underline" rel="noopener noreferrer">{data?.name}</a>
       {router == "/Profile" && <SetLeague showDiv={showDiv} />}
     </motion.div>
     </AnimatePresence>

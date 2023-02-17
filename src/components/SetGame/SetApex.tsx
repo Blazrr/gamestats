@@ -22,9 +22,9 @@ const SetApex = ({ showDiv }: Props) => {
     const response = await fetch(
       `https://api.mozambiquehe.re/bridge?auth=${process.env.NEXT_PUBLIC_APEX_KEY}&player=${username}&platform=${platform}`
     );
+
     const data = await response.json();
     if (!data.Error) {
-      console.log(data);
       const { error } = await supabase
         .from("profiles")
         .update({

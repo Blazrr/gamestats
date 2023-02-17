@@ -7,6 +7,7 @@ import { changeUser } from "slices/userSlice";
 import { toast } from "react-toastify";
 import { RootState } from "store";
 import Apex from "../GameCards/Apex";
+import GlitchedTitle from "../Commons/GlitchedTitle";
 
 type Props = {};
 
@@ -50,9 +51,9 @@ const CurrCard = (props: Props) => {
           save changes
         </button>
 
-        <h1 className="text-6xl font-bold text-center pt-16">
-          {user.username}
-        </h1>
+        <div className=" pt-16">
+          <GlitchedTitle textValue={user.username}/>
+        </div>
         <div className="flex items-center justify-center mt-8 gap-4 flex-col">
           {user.lol != null && <League user={user} showDiv={false} />}
           {user.apex != null && <Apex showDiv={false} user={user}/>}

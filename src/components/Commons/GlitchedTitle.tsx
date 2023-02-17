@@ -28,7 +28,9 @@ const GlitchedTitle = ({textValue}: Props) => {
 
   };
   useEffect(() => {
-    toRandom();
+    if ( text.current.innerText != null){
+      toRandom();
+    }
   })
 
   return (
