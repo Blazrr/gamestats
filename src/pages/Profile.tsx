@@ -29,8 +29,6 @@ const Profile = ({}: Props) => {
     navigator.clipboard.writeText(`https://gamestats-snowy.vercel.app/${user.username}`);
   };
   
-  console.log(user)
-
   return (
     <>
       <AnimatePresence>
@@ -55,7 +53,7 @@ const Profile = ({}: Props) => {
               <EditProfile/>
              
             </div>
-            <h3 className="text-center text-3xl mt-6">Edit your Cards</h3>
+            <h3 className="text-center text-3xl mt-6">Edit your Game Cards</h3>
              <div className="mt-8 flex gap-6 flex-wrap items-center justify-center">
              <SetLeague showDiv={true} />
              <SetApex showDiv={true}/>
