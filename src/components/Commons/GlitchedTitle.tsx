@@ -1,42 +1,44 @@
 import React, { useRef,useEffect } from "react";
 
 type Props = {
-    textValue: string
+    textValue: string 
 
 };
 
 const GlitchedTitle = ({textValue}: Props) => {
-  const text = useRef<any>(null);
+  
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-  const toRandom = () => {
-    let iterations = 0;
+  const toRandom = (event:any) => {
+    let iteration = 0;
+  
+    
     const interval = setInterval(() => {
-      text.current.innerText = text.current.innerText
+      event.target.innerText = event.target.innerText
         .split("")
-        .map((letter:any,index:any) =>{
-            if (index < iterations) {
-               return text.current.dataset.value[index]
-            }
-            return letters[Math.floor(Math.random() * letters.length)]
-        } )
+        .map((letter:any, index:any) => {
+          if(index < iteration) {
+            return event.target.dataset.value[index];
+          }
+        
+          return letters[Math.floor(Math.random() * 26)]
+        })
         .join("");
-        if (iterations >= text.current.dataset.value.length) clearInterval(interval)
-
-        iterations+=1/4
+      
+      if(iteration >= event.target.dataset.value.length){ 
+        clearInterval(interval);
+      }
+      
+      iteration += 1 / 3;
     }, 30);
-
-  };
-  useEffect(() => {
-    toRandom();
-  })
+  }
+  
 
   return (
     <div className="flex justify-center mb-4">
       <span
-        className="bg-purple-300 p-4 text-5xl font-bold rounded-lg"
-        onMouseEnter={toRandom}
-        ref={text}
+        className="bg-purple-300 p-4 text-7xl font-bold rounded-lg"
+        onMouseEnter={(event:any) => toRandom(event)}
         data-value={textValue}
       >
         {textValue}

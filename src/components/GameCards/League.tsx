@@ -20,7 +20,6 @@ type Props = {
 const League = ({ user, showDiv }: Props) => {
   const router = useRouter().route;
   const [data, setData] = useState<LeagueProfile | null>();
-  console.log(showDiv)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,13 +41,13 @@ const League = ({ user, showDiv }: Props) => {
       data != undefined && 
       <AnimatePresence>
     <motion.div
-      className={`p-4 rounded-lg flex flex-col items-center  `}
+      className="p-4 rounded-lg flex  items-center w-[300px] justify-between "
       style={{ backgroundColor: user?.lol?.bgColor }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <div className="relative h-36 w-36  md:h-52 md:w-52 ">
+      <div className="relative  h-12 w-12 ">
         <Image
           src={
             `http://ddragon.leagueoflegends.com/cdn/10.18.1/img/profileicon/${data?.profileIconId}.png` ||
@@ -60,8 +59,8 @@ const League = ({ user, showDiv }: Props) => {
           className="rounded-lg"
         />
       </div>
-      <h3 className="text font-semibold mt-2">Lvl. {data?.summonerLevel}</h3>
-      <h1 className="mt-2 font-semibold">{data?.name}</h1>
+      <h3 className="text font-semibold ">Lvl.{data?.summonerLevel}</h3>
+      <a target="_blank" href={`https://www.op.gg/summoners/${user.lol?.server}/${user.lol?.summonerName}`}  className=" font-semibold  underline" rel="noopener noreferrer">{data?.name}</a>
       {router == "/Profile" && <SetLeague showDiv={showDiv} />}
     </motion.div>
     </AnimatePresence>

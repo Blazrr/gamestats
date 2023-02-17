@@ -29,6 +29,7 @@ const Profile = ({}: Props) => {
     navigator.clipboard.writeText(`https://gamestats-snowy.vercel.app/${user.username}`);
   };
   
+  console.log(user)
 
   return (
     <>
@@ -59,6 +60,8 @@ const Profile = ({}: Props) => {
              <SetLeague showDiv={true} />
              <SetApex showDiv={true}/>
            </div>
+           <CurrCard />
+
            </>
           )}
 
@@ -67,8 +70,6 @@ const Profile = ({}: Props) => {
               Sign Out
             </button>
           </div>
-
-          {user?.username != null && <CurrCard />}
         </motion.div>
       </AnimatePresence>
     </>
