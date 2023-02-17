@@ -1,6 +1,7 @@
 import { AnimatePresence,motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { platform } from "os";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
@@ -34,7 +35,6 @@ const Apex = ({showDiv,user}: Props) => {
 
   }, [user]);
 
-  console.log(data)
 
   return (
     <>
@@ -42,13 +42,13 @@ const Apex = ({showDiv,user}: Props) => {
         data?.legends != undefined && 
         <AnimatePresence>
       <motion.div
-        className={`p-4 rounded-lg flex flex-col items-center  `}
+        className="p-4 rounded-lg flex items-center w-[300px] "
         style={{ backgroundColor: user.apex.bgColor }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <div className="relative h-36 w-36  md:h-52 md:w-52 ">
+        <div className="relative h-12 w-12">
           <Image
             src={`${data?.legends.selected.ImgAssets.icon}`}
             alt="Apex main character"
@@ -57,10 +57,10 @@ const Apex = ({showDiv,user}: Props) => {
             className="rounded-lg"
           />
         </div>
-        <h2 className="mt-4">Lvl {data?.global.level}</h2>
-        <h1>{data?.global.name}</h1>
-        <div className="flex items-center">
-          <div className="relative h-12 w-12  md:h-16 md:w-16 ">
+        <h2 className="">Lvl.{data?.global.level}</h2>
+        <a target="_blank" href={`https://apex.tracker.gg/apex/profile/${user.apex.platform == "PC" ? "origin" : "PSN "}/${user.apex.username}/overview`} rel="noopener noreferrer" className="underline ml-2">{data?.global.name}</a>
+
+          <div className="relative h-12 w-12 ">
             <Image
               src={
                 `${data?.global.rank.rankImg}` }
@@ -70,7 +70,6 @@ const Apex = ({showDiv,user}: Props) => {
               className="rounded-lg"
             />
           </div>
-        </div>
         {router == "/Profile" && <SetApex showDiv={showDiv} />}
       </motion.div>
       </AnimatePresence>   
