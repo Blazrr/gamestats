@@ -18,11 +18,9 @@ const InitUser = (props: Props) => {
           .select()
           .eq("id", session?.user.id);
         if (data) {
-          console.log(data);
           dispatch(initUser(data[0]));
         }
         if (error) {
-          console.log(error)
         }
       };
       if (user?.length == 0 ) {

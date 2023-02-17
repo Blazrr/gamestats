@@ -14,7 +14,6 @@ const ColorPicker = ({setColor}:Props) => {
   const [open, setOpen] = useState(false);
 
   const setPickedColor = (e: circlePicker) => {
-    console.log(e);
     setColor(e.hex);
   };
 
