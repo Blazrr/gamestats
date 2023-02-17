@@ -33,10 +33,6 @@ const GlitchedTitle = ({textValue}: Props) => {
     }, 30);
   }
   
-useEffect(() => {
-  
-})
-
 
   return (
     <div className="flex justify-center mb-4">
