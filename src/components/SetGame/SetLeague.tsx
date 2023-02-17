@@ -17,6 +17,8 @@ const SetLeague = ({ showDiv }: Props) => {
   const [username, setUsername] = useState(user?.lol?.summonerName);
   const dispatch = useDispatch();
   const [color, setColor] = useState(user?.lol?.bgColor || "#000000");
+  const [server, setServer] = useState(user?.lol?.server || "EUW");
+
   const [open, setOpen] = useState(false);
 
   const handleSubmit = async () => {
@@ -28,12 +30,12 @@ const SetLeague = ({ showDiv }: Props) => {
       if (data && username != "") {
         const { error } = await supabase
           .from("profiles")
-          .update({ lol: { summonerName: username, bgColor: color } })
+          .update({ lol: { summonerName: username, bgColor: color, server:server } })
           .eq("id", user.id);
         dispatch(
           changeUser({
             ...user,
-            lol: { summonerName: username, bgColor: color },
+            lol: { summonerName: username, bgColor: color,server:server },
           })
         );
         setOpen(false);
@@ -88,6 +90,17 @@ const SetLeague = ({ showDiv }: Props) => {
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder={user?.lol?.summonerName}
               />
+               <div className="flex flex-col mt-4">
+                <label htmlFor="Platform">Select your Platform</label>
+                <select
+                  value={server}
+                  className="btn text-center"
+                  onChange={(e: any) => setServer(e.target.value)}
+                >
+                  <option value="EUW">EUW</option>
+                  <option value="NA">NA</option>
+                </select>
+              </div>
               <p>Your card color will be {color} </p>
               <ColorPicker setColor={setColor} />
               <button className="btn mt-4" onClick={handleSubmit}>

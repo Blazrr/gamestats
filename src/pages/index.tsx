@@ -4,6 +4,8 @@ import { useSession, useSupabaseClient } from "@supabase/auth-helpers-react";
 import Authentication from "@/components/Index/Authentication";
 import Main from "@/components/Index/Main";
 import { AnimatePresence, motion } from "framer-motion";
+import GlitchedTitle from "@/components/Commons/GlitchedTitle";
+import Blob from "@/components/Commons/Blob";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,6 +18,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {/* <Blob/> */}
 
       <AnimatePresence>
         <motion.div
@@ -24,7 +27,11 @@ export default function Home() {
           exit={{ opacity: 0 }}
           className="w-4/5 mx-auto"
         >
+          
+          <GlitchedTitle textValue="GeeKard"/>
           <Main />
+          <h2 className="mt-[900px]">fsfs</h2>
+
         </motion.div>
       </AnimatePresence>
     </>

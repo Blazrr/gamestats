@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import { user } from "utils/user";
 import Apex from "@/components/GameCards/Apex";
+import GlitchedTitle from "@/components/Commons/GlitchedTitle";
 
 type Props = {
   userData: user[];
@@ -16,12 +17,13 @@ const userprofile = ({ userData }: Props) => {
 
   return (
     <>
-      <div className="h-screen  w-screen" style={{backgroundColor: userData[0]?.background ||  "black"}}>
-      <h1 className="text-6xl font-bold text-center pt-16">{userData[0]?.username }</h1>
+      <div className="h-screen  w-screen " style={{backgroundColor: userData[0]?.background ||  "black"}}>
+        <div className="pt-32" ></div>
+      <GlitchedTitle  textValue={userData[0]?.username || "No Username" } />
 
         <div className="top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 fixed">
           {userData.length != 0 ? (
-            <div className="flex items-center justify-center gap-4 flex-wrap ">
+            <div className="flex items-center justify-center gap-4 flex-col">
               {userData[0]?.lol && (
                 <League user={userData[0]} showDiv={false} />
               )}

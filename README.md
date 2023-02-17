@@ -5,7 +5,7 @@
 
 ## General info
 This project is a an Alternative of Linktree for your Gaming stats .
-This project is in constant Development so if you that's normal if you get bugs and errors
+This project is in constant Development so if you that's normal if you get bugs and errors .
 	
 ## Technologies
 Project is created with:
