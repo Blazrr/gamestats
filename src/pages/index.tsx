@@ -18,13 +18,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Blob/> */}
+        <Blob/>
 
       <AnimatePresence>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          className="w-4/5 mx-auto"
         >
           
           <GlitchedTitle textValue="GeeKard"/>
