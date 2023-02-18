@@ -58,7 +58,8 @@ const Profile = ({}: Props) => {
              <SetLeague showDiv={true} />
              <SetApex showDiv={true}/>
            </div>
-           <CurrCard />
+             <h3 className="text-center text-3xl mt-6">Edit your Social Cards</h3>
+           <CurrCard user={user} />
 
            </>
           )}

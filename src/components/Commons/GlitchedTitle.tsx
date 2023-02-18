@@ -1,4 +1,5 @@
 import React, { useRef,useEffect } from "react";
+import { text } from "stream/consumers";
 
 type Props = {
     textValue: string 
@@ -6,40 +7,47 @@ type Props = {
 };
 
 const GlitchedTitle = ({textValue}: Props) => {
-  
+  const textRef = useRef<any>()
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-  const toRandom = (event:any) => {
+  const toRandom = () => {
     let iteration = 0;
-  
     
     const interval = setInterval(() => {
-      event.target.innerText = event.target.innerText
+      textRef.current.innerText = textRef.current.innerText
         .split("")
         .map((letter:any, index:any) => {
           if(index < iteration) {
-            return event.target.dataset.value[index];
+            return textRef.current.dataset.value[index];
           }
         
           return letters[Math.floor(Math.random() * 26)]
         })
         .join("");
       
-      if(iteration >= event.target.dataset.value.length){ 
+      if(iteration >= textRef.current.dataset.value.length){ 
         clearInterval(interval);
       }
       
       iteration += 1 / 3;
     }, 30);
   }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      toRandom()
+    }, 5000);
+  
+    return () => clearInterval(interval);
+  }, []);
   
 
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-center cursor-default	 ">
       <span
-        className="bg-purple-300 p-4 text-7xl font-bold rounded-lg"
-        onMouseEnter={(event:any) => toRandom(event)}
+        className="bg-purple-300 p-4 md:text-7xl text-5xl font-bold rounded-lg"
         data-value={textValue}
+        ref={textRef}
       >
         {textValue}
       </span>
