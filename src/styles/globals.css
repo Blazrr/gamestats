@@ -68,7 +68,18 @@ body {
     flex-direction: column;
   }
   
+  .card{
+    perspective: 1000px;
+  }
 
+  .content-card{
+    transition: all 0.12s ease-out;
+  }
+  .glow{
+    transition: all 0.12s ease-out;
+    mix-blend-mode: hard-light;
+    background: radial-gradient(circle at 50% 0%, rgb(184,196,211), transparent);
+  }
 
 
   .socials {

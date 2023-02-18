@@ -12,7 +12,6 @@ const GlitchedTitle = ({textValue}: Props) => {
 
   const toRandom = () => {
     let iteration = 0;
-    console.log(textRef);
     
     const interval = setInterval(() => {
       textRef.current.innerText = textRef.current.innerText
@@ -44,9 +43,9 @@ const GlitchedTitle = ({textValue}: Props) => {
   
 
   return (
-    <div className="flex justify-center ">
+    <div className="flex justify-center cursor-default	 ">
       <span
-        className="bg-purple-300 p-4 text-7xl font-bold rounded-lg"
+        className="bg-purple-300 p-4 md:text-7xl text-5xl font-bold rounded-lg"
         data-value={textValue}
         ref={textRef}
       >

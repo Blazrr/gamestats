@@ -27,7 +27,7 @@ const CurrCard = (props: Props) => {
       <div className=" flex items-center space-x-4 justify-center ">
         <GlitchedTitle textValue={user?.username} />
         {user?.avatar_url && (
-           <div className="relative  h-[104px] aspect-square ">
+           <div className="relative h-[80px] md:h-[104px] aspect-square ">
            <Image
              src={user?.avatar_url}
              alt="User Avatar"
