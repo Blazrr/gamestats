@@ -22,7 +22,7 @@ const userprofile = ({ userData }: Props) => {
        
 
           {userData.length != 0 ? (
-            <CurrCard/>
+            <CurrCard user={userData[0]} />
           ) : (
             <>
               <h1 className="text-center text-4xl pt-16 ">

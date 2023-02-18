@@ -10,38 +10,55 @@ import Apex from "../GameCards/Apex";
 import GlitchedTitle from "../Commons/GlitchedTitle";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import Games from "../Games";
+import Socials from "../Socials";
+import Setup from "../Setup";
 
-type Props = {};
+type Props = {
+  user:any
+};
 
-const CurrCard = (props: Props) => {
-  const user = useSelector((state: RootState) => state.user.value);
+const CurrCard = ({user}: Props) => {
   const router = useRouter().route;
-  console.log(user);
+  const [tab, setTab] = useState("Games");
 
   return (
     <div
-      className={`purpink p-16 ${router == "/Profile" ? "rounded-lg mt-16" : "h-screen w-screen"} `}
-    
+      className={`purpink p-16 ${
+        router == "/Profile" ? "rounded-lg mt-16" : "h-screen w-screen"
+      } `}
     >
-  
       <div className=" flex items-center space-x-4 justify-center ">
         <GlitchedTitle textValue={user?.username} />
         {user?.avatar_url && (
-           <div className="relative h-[80px] md:h-[104px] aspect-square ">
-           <Image
-             src={user?.avatar_url}
-             alt="User Avatar"
-             layout="fill"
-             objectFit="cover"
-             className="rounded-lg"
-           />
-         </div>
+          <div className="relative h-[80px] md:h-[104px] aspect-square ">
+            <Image
+              src={user?.avatar_url}
+              alt="User Avatar"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-lg"
+            />
+          </div>
         )}
       </div>
-      <div className="flex items-center justify-center mt-16 gap-4 flex-col">
-        {user.lol != null && <League user={user} showDiv={false} />}
-        {user.apex != null && <Apex showDiv={false} user={user} />}
-      </div>
+      <nav className="flex items-center justify-center mt-16">
+        <li className="space-x-8 list-none	">
+          <a href="#" onClick={() => setTab("Games")}>
+            Games
+          </a>
+          <a href="#" onClick={() => setTab("Socials")}>
+            Socials
+          </a>
+          <a href="#" onClick={() => setTab("Setup")}>
+            Setup
+          </a>
+        </li>
+      </nav>
+      {tab == "Games" && <Games />}
+      {tab == "Socials" && <Socials />}
+      {tab == "Setup" && <Setup />}
+
     </div>
   );
 };
