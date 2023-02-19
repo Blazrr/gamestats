@@ -44,15 +44,15 @@ const CurrCard = ({user}: Props) => {
       </div>
       <nav className="flex items-center justify-center mt-16">
         <li className="space-x-8 list-none	">
-          <a href="#" onClick={() => setTab("Games")}>
+          <span className="cursor-pointer"  onClick={() => setTab("Games")}>
             Games
-          </a>
-          <a href="#" onClick={() => setTab("Socials")}>
+          </span>
+          <span className="cursor-pointer"  onClick={() => setTab("Socials")}>
             Socials
-          </a>
-          <a href="#" onClick={() => setTab("Setup")}>
+          </span>
+          <span className="cursor-pointer" onClick={() => setTab("Setup")}>
             Setup
-          </a>
+          </span>
         </li>
       </nav>
       {tab == "Games" && <Games />}
