@@ -1,9 +1,13 @@
 import { AnimatePresence ,motion} from 'framer-motion'
 import React from 'react'
+import { user } from 'utils/user'
 
-type Props = {}
+type Props = {
+  user:user
+}
 
-const Socials = (props: Props) => {
+const Socials = ({user}: Props) => {
+  console.log(user)
   return (
     <AnimatePresence>
 
