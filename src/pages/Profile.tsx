@@ -47,8 +47,8 @@ const Profile = ({}: Props) => {
               <h1 className="text-center text-2xl">
                 Welcome back {user.username}
               </h1>
-              <div className="mt-4 bg-slate-300 p-2 rounded space-x-2">
-                <span className="text-black">https://gamestats-snowy.vercel.app/{user.username}</span>
+              <div className="mt-4 bg-slate-300 p-2 rounded space-x-2 flex items-center ">
+                <span className="text-black ">https://gamestats-snowy.vercel.app/{user.username}</span>
                 <button className="btn" onClick={handleCopy}>Copy</button>
               </div>
               <EditProfile/>

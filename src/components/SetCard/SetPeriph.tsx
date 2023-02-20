@@ -16,7 +16,7 @@ const SetPeriph = (props: Props) => {
   const dispatch = useDispatch();
   const [periph, setPeriph] = useState("Choose");
   const [link, setLink] = useState();
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   console.log(periph)
   const handleSubmit = async () => {

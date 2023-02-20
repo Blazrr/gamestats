@@ -61,10 +61,7 @@ const Avatar = ({ setAvatar }: Props) => {
             Upload Avatar
           </label>
           <input
-            style={{
-              visibility: "hidden",
-              position: "absolute",
-            }}
+            className="hidden"
             type="file"
             id="single"
             accept="image/*"
