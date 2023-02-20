@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ColorPicker from "../Edit/ColorPicker";
 import { toast } from "react-toastify";
 import { changeUser } from "slices/userSlice";
@@ -17,13 +17,15 @@ const SetPeriph = (props: Props) => {
   const [periph, setPeriph] = useState("Choose");
   const [link, setLink] = useState();
   const [open, setOpen] = useState(false);
+  const [curr, setCurr] = useState<any>();
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (p:any) => {
     const tmp = user.setup.filter((item: any) => {
       return item.periph != periph;
     });
-    tmp.push({ periph: periph, link: link, name: name });
-    console.log(tmp);
+    if (p != "del") {
+      tmp.push({ periph: periph, link: link, name: name });
+    }
     const { error } = await supabase
       .from("profiles")
       .update({ setup: tmp })
@@ -36,6 +38,15 @@ const SetPeriph = (props: Props) => {
     );
     setOpen(false);
   };
+
+  const handleChange = (e: any) => {
+    setPeriph(e.target.value);
+    const tmp = user.setup.filter((item: any) => {
+      return item.periph == e.target.value;
+    });
+    setCurr(tmp[0]);
+  };
+
   return (
     <>
       <button className="btn mx-auto flex mt-8" onClick={() => setOpen(true)}>
@@ -51,6 +62,11 @@ const SetPeriph = (props: Props) => {
             <div className="mt-6 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-black p-8 rounded-lg z-30 min-w-[300px]">
               {periph != "Choose" && (
                 <>
+                  {curr != undefined && (
+                    <button className="btn" onClick={() => handleSubmit("del")}>
+                      delete
+                    </button>
+                  )}
                   <div className="flex flex-col">
                     <label htmlFor="name">your {periph} name</label>
                     <input
@@ -58,6 +74,7 @@ const SetPeriph = (props: Props) => {
                       className="input max-w-[300px] mt-2"
                       onChange={(e: any) => setName(e.target.value)}
                       id="name"
+                      placeholder={curr?.name}
                     />
                   </div>
 
@@ -68,6 +85,7 @@ const SetPeriph = (props: Props) => {
                       className="input max-w-[300px] mt-2"
                       onChange={(e: any) => setLink(e.target.value)}
                       id="link"
+                      placeholder={curr?.link}
                     />
                   </div>
                 </>
@@ -78,7 +96,7 @@ const SetPeriph = (props: Props) => {
                 <select
                   value={periph}
                   className="btn text-center mt-4"
-                  onChange={(e: any) => setPeriph(e.target.value)}
+                  onChange={(e: any) => handleChange(e)}
                 >
                   <option value="Choose">Chose a Peripheral</option>
                   <option value="mouse">Mouse</option>
