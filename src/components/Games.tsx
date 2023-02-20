@@ -4,12 +4,15 @@ import Apex from './GameCards/Apex'
 import { useSelector } from 'react-redux'
 import { RootState } from 'store'
 import { AnimatePresence,motion } from 'framer-motion'
+import { user } from 'utils/user'
 
 
-type Props = {}
+type Props = {
+  user:user
+}
 
-const Games = (props: Props) => {
-    const user = useSelector((state: RootState) => state.user.value);
+const Games = ({user}: Props) => {
+  console.log(user);
 
   return (
     <AnimatePresence>

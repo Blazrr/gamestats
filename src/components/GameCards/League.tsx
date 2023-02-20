@@ -23,11 +23,16 @@ const League = ({ user, showDiv }: Props) => {
 
   useEffect(() => {
     const fetchData = async () => {
+      try{
       const tmp = await fetch(
         `https://euw1.api.riotgames.com/lol/summoner/v4/summoners/by-name/${user?.lol?.summonerName}?api_key=${process.env.NEXT_PUBLIC_RIOT_API_KEY}`
       );
       const res = await tmp.json();
       setData(res);
+      }
+      catch(err) {
+      console.log("league api key is down");
+      }
     };
     if (user != undefined) {
       fetchData();
@@ -54,8 +59,6 @@ const League = ({ user, showDiv }: Props) => {
             "https://aeroclub-issoire.fr/wp-content/uploads/2020/05/image-not-found.jpg"
           }
           alt="League of Legends icon"
-          layout="fill"
-          objectFit="cover"
           className="rounded-lg"
         />
       </div>

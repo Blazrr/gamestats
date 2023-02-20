@@ -1,18 +1,30 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React from "react";
+import { user } from "utils/user";
 
-type Props = {};
+type Props = {
+  user:user
+};
 
-const Setup = (props: Props) => {
+const Setup = ({user}: Props) => {
+  console.log(user)
   return (
     <AnimatePresence>
 
-    <motion.div className="flex items-center justify-center mt-16 gap-4 flex-col"
+    <motion.div className="flex  mt-16 space-y-8 flex-col justify-center items-center "
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }} 
     >
-    <h1>test</h1>
+    {user.setup.map((item,id) => {
+      return(
+        <div key={id} className="flex space-x-4 items-center ">
+          <span>{item.periph} :</span>
+          <p>{item.name}</p>
+          <button className="btn"> <a href={item.link} target="_blank" rel="noreferrer">Buy</a> </button>
+        </div>
+      )
+    })}
   </motion.div>
     </AnimatePresence>
   );

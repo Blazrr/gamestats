@@ -4,6 +4,12 @@ export interface lol {
   server:string;
 }
 
+
+export interface peripheral{
+  periph:string;
+  link:string;
+  name:string;
+}
 export interface apex {
   bgColor: string;
   username: string;
@@ -20,4 +26,5 @@ export interface user {
   username?: string;
   website?: string;
   apex: apex;
+  setup: peripheral[];
 }
