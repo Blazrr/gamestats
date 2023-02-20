@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "store";
 import { Apex } from "utils/apex";
 import { user } from "utils/user";
-import SetApex from "../SetGame/SetApex";
+import SetApex from "../SetCard/SetApex";
 
 type Props = {
   showDiv: boolean;

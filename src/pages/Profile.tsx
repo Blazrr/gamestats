@@ -6,12 +6,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import NameNeeded from "@/components/Profile/NameNeeded";
-import SetLeague from "@/components/SetGame/SetLeague";
+import SetLeague from "@/components/SetCard/SetLeague";
 import { GetServerSideProps } from "next";
 
 import CurrCard from "@/components/Profile/CurrCard";
 import EditProfile from "@/components/Profile/EditProfile";
-import SetApex from "@/components/SetGame/SetApex";
+import SetApex from "@/components/SetCard/SetApex";
+import SetPeriph from "@/components/SetCard/SetPeriph";
 
 type Props = {};
 
@@ -46,8 +47,8 @@ const Profile = ({}: Props) => {
               <h1 className="text-center text-2xl">
                 Welcome back {user.username}
               </h1>
-              <div className="mt-4 bg-slate-300 p-2 rounded space-x-2">
-                <span className="text-black">https://gamestats-snowy.vercel.app/{user.username}</span>
+              <div className="mt-4 bg-slate-300 p-2 rounded space-x-2 flex items-center ">
+                <span className="text-black ">https://gamestats-snowy.vercel.app/{user.username}</span>
                 <button className="btn" onClick={handleCopy}>Copy</button>
               </div>
               <EditProfile/>
@@ -59,6 +60,7 @@ const Profile = ({}: Props) => {
              <SetApex showDiv={true}/>
            </div>
              <h3 className="text-center text-3xl mt-6">Edit your Social Cards</h3>
+             <SetPeriph/>
            <CurrCard user={user} />
 
            </>

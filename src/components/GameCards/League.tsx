@@ -6,7 +6,7 @@ import { supabase } from "lib/supabaseClient";
 import { LeagueProfile } from "utils/league";
 import { lol, user } from "utils/user";
 import { useRouter } from "next/router";
-import SetLeague from "../SetGame/SetLeague";
+import SetLeague from "../SetCard/SetLeague";
 import { useSelector } from "react-redux";
 import { RootState } from "store";
 import { AnimatePresence,motion } from "framer-motion";
