@@ -43,13 +43,13 @@ const CurrCard = ({user}: Props) => {
         )}
       </div>
         <ul className="flex items-center justify-center mt-16 space-x-8">
-          <li className="cursor-pointer"  onClick={() => setTab("Games")}>
+          <li className={`cursor-pointer ${tab == "Games" && " bg-slate-700 rounded p-1"}`}  onClick={() => setTab("Games")}>
             Games
           </li>
-          <li className="cursor-pointer"  onClick={() => setTab("Socials")}>
+          <li className={`cursor-pointer ${tab == "Socials" && "  bg-slate-700 rounded p-1"}`}   onClick={() => setTab("Socials")}>
             Socials
           </li>
-          <li className="cursor-pointer" onClick={() => setTab("Setup")}>
+          <li className={`cursor-pointer ${tab == "Setup" && " bg-slate-700 rounded p-1"}`}  onClick={() => setTab("Setup")}>
             Setup
           </li>
         </ul>
