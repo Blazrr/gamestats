@@ -46,7 +46,7 @@ const League = ({ user, showDiv }: Props) => {
       data != undefined && 
       <AnimatePresence>
     <motion.div
-      className="p-4 rounded-lg flex  items-center w-[300px] justify-between "
+      className="p-4 rounded-lg flex  items-center w-[240px] md:w-[300px] justify-between "
       style={{ backgroundColor: user?.lol?.bgColor }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

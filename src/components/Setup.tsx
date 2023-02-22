@@ -19,7 +19,7 @@ const Setup = ({user}: Props) => {
     {user.setup.map((item,id) => {
       return(
         <div key={id} className="flex space-x-4 items-center ">
-          <span>{item.periph} :</span>
+          <span>{item.periph} </span>
           <p>{item.name}</p>
           <button className="btn"> <a href={item.link} target="_blank" rel="noreferrer">Buy</a> </button>
         </div>
