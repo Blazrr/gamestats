@@ -5,16 +5,23 @@ export interface lol {
 }
 
 
-export interface peripheral{
+ interface peripheral{
   periph:string;
   link:string;
   name:string;
 }
-export interface apex {
+ interface apex {
   bgColor: string;
   username: string;
   platform: string;
   uid:string;
+}
+ interface valorant{
+  bgColor: string;
+  username: string;
+  server: string;
+  tagline:string;
+
 }
 export interface user {
   avatar_url?: string;
@@ -27,4 +34,5 @@ export interface user {
   website?: string;
   apex: apex;
   setup: peripheral[];
+  valorant
 }
