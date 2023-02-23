@@ -9,12 +9,10 @@ import Card from "./Card";
 type Props = {};
 
 const Main = (props: Props) => {
-
   return (
     <div>
       <Header/>
       <div className="mt-12 flex justify-center">
-
       <Card/>
       </div>
     </div>

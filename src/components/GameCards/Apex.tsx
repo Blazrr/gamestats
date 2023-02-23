@@ -38,7 +38,7 @@ const Apex = ({ showDiv, user }: Props) => {
       {data?.legends != undefined && (
         <AnimatePresence>
           <motion.div
-            className="p-4 rounded-lg flex items-center w-[300px] justify-between "
+            className="p-4 rounded-lg flex items-center w-[240px] md:w-[300px] justify-between "
             style={{ backgroundColor: user.apex.bgColor }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
