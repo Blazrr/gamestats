@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from 'store'
 import { AnimatePresence,motion } from 'framer-motion'
 import { user } from 'utils/user'
+import Valorant from './GameCards/Valorant'
 
 
 type Props = {
@@ -24,6 +25,7 @@ const Games = ({user}: Props) => {
     >
     {user.lol != null && <League user={user} showDiv={false} />}
     {user.apex != null && <Apex showDiv={false} user={user} />}
+    {user.valorant != null && <Valorant user={user} />}
   </motion.div>
     </AnimatePresence>
   )

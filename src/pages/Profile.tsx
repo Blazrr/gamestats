@@ -13,6 +13,7 @@ import CurrCard from "@/components/Profile/CurrCard";
 import EditProfile from "@/components/Profile/EditProfile";
 import SetApex from "@/components/SetCard/SetApex";
 import SetPeriph from "@/components/SetCard/SetPeriph";
+import SetValorant from "@/components/SetCard/SetValorant";
 
 type Props = {};
 
@@ -58,6 +59,7 @@ const Profile = ({}: Props) => {
              <div className="mt-8 flex gap-6 flex-wrap items-center justify-center">
              <SetLeague showDiv={true} />
              <SetApex showDiv={true}/>
+             <SetValorant showDiv={true}/>
            </div>
              <h3 className="text-center text-3xl mt-6">Edit your Social Cards</h3>
              <SetPeriph/>
