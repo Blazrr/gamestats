@@ -14,6 +14,7 @@ import EditProfile from "@/components/Profile/EditProfile";
 import SetApex from "@/components/SetCard/SetApex";
 import SetPeriph from "@/components/SetCard/SetPeriph";
 import SetValorant from "@/components/SetCard/SetValorant";
+import SetColor from "@/components/SetCard/SetColor";
 
 type Props = {};
 
@@ -61,8 +62,11 @@ const Profile = ({}: Props) => {
              <SetApex showDiv={true}/>
              <SetValorant showDiv={true}/>
            </div>
-             <h3 className="text-center text-3xl mt-6">Edit your Social Cards</h3>
+             <h3 className="text-center text-3xl mt-6">Edit your Setup Cards</h3>
              <SetPeriph/>
+             <h3 className="text-center text-3xl mt-6">Edit your Card Color</h3>
+             <SetColor/>
+
            <CurrCard user={user} />
 
            </>

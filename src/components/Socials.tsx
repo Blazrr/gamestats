@@ -7,7 +7,6 @@ type Props = {
 }
 
 const Socials = ({user}: Props) => {
-  console.log(user)
   return (
     <AnimatePresence>
 

@@ -7,7 +7,6 @@ type Props = {
 };
 
 const Setup = ({user}: Props) => {
-  console.log(user)
   return (
     <AnimatePresence>
 

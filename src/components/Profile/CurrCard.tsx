@@ -24,7 +24,7 @@ const CurrCard = ({user}: Props) => {
 
   return (
     <div
-      className={`purpink p-16 ${
+      className={`${user.background} p-16 ${
         router == "/Profile" ? "rounded-lg mt-16" : "h-screen w-screen"
       } `}
     >

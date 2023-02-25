@@ -88,7 +88,7 @@ const SetLeague = ({ showDiv }: Props) => {
                 type="text"
                 className="input max-w-[300px] mt-2"
                 onChange={(e) => setUsername(e.target.value)}
-                placeholder={user?.lol?.summonerName}
+                value={username || ""}
               />
                <div className="flex flex-col mt-4">
                 <label htmlFor="Platform">Select your Platform</label>
