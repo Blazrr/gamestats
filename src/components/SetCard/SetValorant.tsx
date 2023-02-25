@@ -14,11 +14,11 @@ type Props = { showDiv: boolean };
 
 const SetValorant = ({ showDiv }: Props) => {
   const user = useSelector((state: RootState) => state.user.value);
-  const [username, setUsername] = useState(user?.lol?.summonerName);
+  const [username, setUsername] = useState(user.valorant.username);
   const dispatch = useDispatch();
   const [color, setColor] = useState(user?.lol?.bgColor || "#000000");
   const [server, setServer] = useState("eu");
-  const [tagline, setTagline] = useState()
+  const [tagline, setTagline] = useState(user.valorant.tagline)
 
   const [open, setOpen] = useState(false);
 
@@ -64,21 +64,6 @@ const SetValorant = ({ showDiv }: Props) => {
             role: "alert",
           });
       }
-    //   if (data && username != "") {
-      
-
-    //   }
-    // } catch (error) {
-    //   toast("Please enter a Valid Summoner name", {
-    //     icon: "❌",
-    //     autoClose: 2000,
-    //     hideProgressBar: true,
-    //     pauseOnHover: false,
-    //     theme: "dark",
-    //     role: "alert",
-    //   });
-    //   console.log("catch");
-    // }
   };
 
   return (
@@ -112,7 +97,7 @@ const SetValorant = ({ showDiv }: Props) => {
                   type="text"
                   className="input max-w-[300px] mt-2"
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder={user.valorant.username}
+                  value={username || ""}
                 />
               </div>
               <div>
@@ -121,7 +106,7 @@ const SetValorant = ({ showDiv }: Props) => {
                   type="text"
                   className="input max-w-[300px] mt-2"
                   onChange={(e:any) => setTagline(e.target.value)}
-                  placeholder={user.valorant.tagline}
+                  value={tagline || ""}
                 />
               </div>
               <div className="flex flex-col mt-4">

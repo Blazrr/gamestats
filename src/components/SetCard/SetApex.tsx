@@ -99,7 +99,7 @@ const SetApex = ({ showDiv }: Props) => {
                   type="text"
                   className="input max-w-[300px] mt-2"
                   onChange={(e) => setUsername(e.target.value)}
-                  placeholder={user?.apex?.username}
+                  value={username || ""}
                   id="username"
                 />
               </div>
