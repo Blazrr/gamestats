@@ -31,7 +31,6 @@ const League = ({ user, showDiv }: Props) => {
       setData(res);
       }
       catch(err) {
-      console.log("league api key is down");
       }
     };
     if (user != undefined) {

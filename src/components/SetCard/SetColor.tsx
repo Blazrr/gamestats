@@ -13,7 +13,6 @@ const SetColor = (props: Props) => {
 
     const submitColor = async(e:string) => {
         setColor(e)
-        console.log(e);
         const { error } = await supabase
         .from("profiles")
         .update({ background:  e  })
