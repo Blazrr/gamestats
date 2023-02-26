@@ -53,10 +53,16 @@ const CurrCard = ({user}: Props) => {
             Setup
           </li>
         </ul>
- 
-      {tab == "Games" && <Games user={user} />}
-      {tab == "Socials" && <Socials user={user} />}
-      {tab == "Setup" && <Setup user={user} />}
+          
+      <div className={tab == "Games" ? "block" : "hidden"}>
+          <Games user={user}/>
+      </div>
+      <div className={tab == "Socials" ? "block" : "hidden"}>
+      <Socials user={user} />
+      </div>
+      <div className={tab == "Setup" ? "block" : "hidden"}>
+      <Setup user={user} />
+      </div>
 
     </div>
   );
