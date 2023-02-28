@@ -23,7 +23,7 @@ const Games = ({user}: Props) => {
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }} 
     >
-    {user.lol != null && <League user={user} showDiv={false} />}
+    {/* {user.lol != null && <League user={user} showDiv={false} />} */}
     {user.apex != null && <Apex showDiv={false} user={user} />}
     {user.valorant != null && <Valorant user={user} />}
   </motion.div>

@@ -1,14 +1,11 @@
-import useFetch from "hooks/useFetch";
-import { GetServerSideProps } from "next";
+
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
-import { supabase } from "lib/supabaseClient";
 import { LeagueProfile } from "utils/league";
-import { lol, user } from "utils/user";
+import {  user } from "utils/user";
 import { useRouter } from "next/router";
 import SetLeague from "../SetCard/SetLeague";
-import { useSelector } from "react-redux";
-import { RootState } from "store";
+
 import { AnimatePresence,motion } from "framer-motion";
 
 type Props = {

@@ -54,8 +54,8 @@ const EditProfile = (props: Props) => {
       <input
         type="text"
         id="username"
-        placeholder={user.username}
         onChange={(e) => setUsername(e.target.value)}
+        value={username || ""}
         className="input mt-4 max-w-[200px] "
       />
       </div>
