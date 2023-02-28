@@ -58,7 +58,7 @@ const Profile = ({}: Props) => {
             </div>
             <h3 className="text-center text-3xl mt-6">Edit your Game Cards</h3>
              <div className="mt-8 flex gap-6 flex-wrap items-center justify-center">
-             <SetLeague showDiv={true} />
+             {/* <SetLeague showDiv={true} /> */}
              <SetApex showDiv={true}/>
              <SetValorant showDiv={true}/>
            </div>
