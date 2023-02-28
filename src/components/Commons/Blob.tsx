@@ -3,10 +3,10 @@ import React, { useEffect, useRef } from "react";
 type Props = {};
 
 const Blob = (props: Props) => {
-  const blob = useRef<any>();
+  const blob = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const mouseMove = (e: any) => {
+    const mouseMove = (e:any) => {
       const { x, y } = e;
       if (blob.current?.animate != null) {
         blob.current.animate(

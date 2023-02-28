@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ColorPicker from "../Edit/ColorPicker";
-import { toast } from "react-toastify";
 import { changeUser } from "slices/userSlice";
 import { supabase } from "lib/supabaseClient";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
+import { periph } from "utils/setup";
+import { peripheral } from "utils/user";
 
 type Props = {};
 
@@ -17,13 +16,13 @@ const SetPeriph = (props: Props) => {
   const [periph, setPeriph] = useState("Choose");
   const [link, setLink] = useState();
   const [open, setOpen] = useState(false);
-  const [curr, setCurr] = useState<any>();
+  const [curr, setCurr] = useState<peripheral>();
 
-  const handleSubmit = async (p:any) => {
-    const tmp = user.setup.filter((item: any) => {
+  const handleSubmit = async (p: string ) => {
+    const tmp = user.setup.filter((item: periph) => {
       return item.periph != periph;
     });
-    if (p != "del") {
+    if (p != "DEL") {
       tmp.push({ periph: periph, link: link, name: name });
     }
     const { error } = await supabase
@@ -41,7 +40,7 @@ const SetPeriph = (props: Props) => {
 
   const handleChange = (e: any) => {
     setPeriph(e.target.value);
-    const tmp = user.setup.filter((item: any) => {
+    const tmp = user.setup.filter((item: peripheral) => {
       return item.periph == e.target.value;
     });
     setCurr(tmp[0]);
@@ -63,7 +62,7 @@ const SetPeriph = (props: Props) => {
               {periph != "Choose" && (
                 <>
                   {curr != undefined && (
-                    <button className="btn" onClick={() => handleSubmit("del")}>
+                    <button className="btn" onClick={() => handleSubmit("DEL")}>
                       delete
                     </button>
                   )}
@@ -72,7 +71,7 @@ const SetPeriph = (props: Props) => {
                     <input
                       type="text"
                       className="input max-w-[300px] mt-2"
-                      onChange={(e: any) => setName(e.target.value)}
+                      onChange={(e:any) => setName(e.target.value)}
                       id="name"
                       placeholder={curr?.name}
                     />
@@ -105,7 +104,7 @@ const SetPeriph = (props: Props) => {
                 </select>
               </div>
 
-              <button className="btn mt-4" onClick={handleSubmit}>
+              <button className="btn mt-4" onClick={() =>handleSubmit("ADD")}>
                 Confirm
               </button>
             </div>

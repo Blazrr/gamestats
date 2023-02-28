@@ -4,10 +4,10 @@ import React, { useRef } from "react";
 type Props = {};
 
 const Card = (props: Props) => {
-  const card = useRef<any>();
+  const card = useRef<HTMLDivElement | any>(null);
   const moveCard = (e: any) => {
-    let cardRect = card.current.getBoundingClientRect();
-    let x = e.clientX - cardRect.x;
+    let cardRect = card.current?.getBoundingClientRect();
+    let x = e?.clientX - cardRect?.x;
     let y = e.clientY - cardRect.y;
 
     let midCardWidth = cardRect.width / 2;
@@ -28,7 +28,7 @@ const Card = (props: Props) => {
   
   
 
-  const resetCard = (e:any) => {
+  const resetCard = () => {
     card.current.children[0].style.transform = `rotateY(0) rotateX(0) scale(1)`;
     card.current.children[1].style.transform = `rotateY(0) rotateX(0) scale(1)`;
 
@@ -39,7 +39,7 @@ const Card = (props: Props) => {
       className="md:h-[500px] md:w-[350px] h-[400px] w-[300px]  rounded-xl card"
       ref={card}
       onMouseMove={(e: any) => moveCard(e)}
-      onMouseLeave={(e: any) => resetCard(e)}
+      onMouseLeave={resetCard}
     >
       <div className="w-full h-full overflow-hidden content-card">
         <div className="relative h-full w-full">

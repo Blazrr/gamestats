@@ -7,7 +7,7 @@ type Props = {
 };
 
 const GlitchedTitle = ({textValue}: Props) => {
-  const textRef = useRef<any>()
+  const textRef = useRef< HTMLSpanElement | any>(null)
   const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
   const toRandom = () => {
@@ -16,7 +16,7 @@ const GlitchedTitle = ({textValue}: Props) => {
     const interval = setInterval(() => {
       textRef.current.innerText = textRef.current.innerText
         .split("")
-        .map((letter:any, index:any) => {
+        .map((letter:string, index:number) => {
           if(index < iteration) {
             return textRef.current.dataset.value[index];
           }

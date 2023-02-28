@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 type Props = {};
 
 const Contact = (props: Props) => {
-  const form = useRef<any>();
+  const form = useRef<HTMLFormElement | any>();
   const [input, setInput] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
