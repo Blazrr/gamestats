@@ -83,7 +83,7 @@ const Profile = ({}: Props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const supabase = createServerSupabaseClient(ctx);
   console.log(ctx)
   const {

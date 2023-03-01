@@ -108,7 +108,7 @@ const SetApex = ({ showDiv }: Props) => {
                 <select
                   value={platform}
                   className="btn text-center"
-                  onChange={(e: any) => setPlatform(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPlatform(e.target.value)}
                 >
                   <option value="PC">PC</option>
                   <option value="PS4">PS4</option>

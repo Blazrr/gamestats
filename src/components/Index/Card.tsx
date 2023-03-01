@@ -4,10 +4,15 @@ import React, { useRef } from "react";
 type Props = {};
 
 const Card = (props: Props) => {
-  const card = useRef<HTMLDivElement | any>(null);
-  const moveCard = (e: any) => {
+  const card = useRef<HTMLDivElement | any >(null);
+  const moveCard: React.MouseEventHandler<HTMLDivElement> = (e) => {
+  
+
     let cardRect = card.current?.getBoundingClientRect();
-    let x = e?.clientX - cardRect?.x;
+  
+    if(cardRect?.x && card.current){
+
+    let x = e.clientX - cardRect.x;
     let y = e.clientY - cardRect.y;
 
     let midCardWidth = cardRect.width / 2;
@@ -20,16 +25,18 @@ const Card = (props: Props) => {
     let glowY = y / cardRect.height * 100
 
 
-    card.current.children[0].style.transform = `rotateY(${angleY}deg) rotateX(${angleX}deg) scale(1.1)`;
+    card.current.children[0].style.transform  = `rotateY(${angleY}deg) rotateX(${angleX}deg) scale(1.1)`;
     card.current.children[1].style.transform = `rotateY(${angleY}deg) rotateX(${angleX}deg) scale(1.1)`;
     card.current.children[1].style.background = `radial-gradient(circle at ${glowX} ${glowY}, rgb(184,196,211), transparent)`
+    }
+    
 
   }
   
   
 
   const resetCard = () => {
-    card.current.children[0].style.transform = `rotateY(0) rotateX(0) scale(1)`;
+    card.current.style.transform = `rotateY(0) rotateX(0) scale(1)`;
     card.current.children[1].style.transform = `rotateY(0) rotateX(0) scale(1)`;
 
   }
@@ -38,7 +45,7 @@ const Card = (props: Props) => {
     <div
       className="md:h-[500px] md:w-[350px] h-[400px] w-[300px]  rounded-xl card"
       ref={card}
-      onMouseMove={(e: any) => moveCard(e)}
+      onMouseMove={(e:React.MouseEvent<HTMLDivElement>) => moveCard(e)}
       onMouseLeave={resetCard}
     >
       <div className="w-full h-full overflow-hidden content-card">

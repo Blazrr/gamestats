@@ -3,8 +3,8 @@ import { LeagueProfile } from "utils/league";
 
 
 const useFetch = (url:string) => {
-    const [data, setData] = useState<LeagueProfile | null>(null)
-    const [error, setError] = useState<any>(null)
+    const [data, setData] = useState<unknown | null>(null)
+    const [error, setError] = useState<unknown | null>(null)
     const [loading, setLoading] = useState(true)
 
     useEffect(()=> {
@@ -16,7 +16,7 @@ const useFetch = (url:string) => {
                 setData(json)
                 setLoading(false)
             }
-            catch(error){
+            catch(error:unknown){
                 setError(error)
                 setLoading(false)
             }

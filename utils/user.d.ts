@@ -29,9 +29,9 @@ export interface user {
   full_name?: string;
   id?: id;
   lol?: lol;
-  updated_at?: null;
-  username?: string;
-  website?: string;
+  updated_at: null;
+  username: string;
+  website: string;
   apex: apex;
   setup: peripheral[];
   valorant

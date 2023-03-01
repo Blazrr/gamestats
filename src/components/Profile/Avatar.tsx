@@ -1,3 +1,4 @@
+import { calcLength } from "framer-motion";
 import { supabase } from "lib/supabaseClient";
 import Image from "next/image";
 import React, {  useState } from "react";
@@ -5,7 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "store";
 
 type Props = {
-  setAvatar: (avatar: any) => void;
+  setAvatar: (avatar: string) => void;
 };
 
 const Avatar = ({ setAvatar }: Props) => {
@@ -13,7 +14,11 @@ const Avatar = ({ setAvatar }: Props) => {
   const [currentAvatar, setCurrentAvatar] = useState(user.avatar_url);
   const [loading, setLoading] = useState(false);
 
-  const uploadAvatar = async (event: any) => {
+  const uploadAvatar: React.ChangeEventHandler<HTMLInputElement> = async (event) => {
+
+    if (!event.target.files || event.target.files.length === 0) {
+      throw new Error('You must select an image to upload.')
+    }
     setLoading(true);
     const file = event.target.files[0];
     const fileExt = file.name.split(".").pop();
@@ -36,6 +41,7 @@ const Avatar = ({ setAvatar }: Props) => {
       );
       setLoading(false);
     }
+
   };
 
   return (

@@ -1,9 +1,8 @@
 import { AnimatePresence,motion } from "framer-motion";
 import React, { useState } from "react";
-//@ts-ignore
 import { CirclePicker } from "react-color";
 
-type Props = {setColor:any};
+type Props = {setColor:(color:string) => void};
 interface circlePicker {
   hex:string
 }

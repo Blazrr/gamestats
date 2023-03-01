@@ -6,13 +6,13 @@ import { toast } from "react-toastify";
 type Props = {};
 
 const Contact = (props: Props) => {
-  const form = useRef<HTMLFormElement | any>();
+  const form = useRef<HTMLFormElement >(null);
   const [input, setInput] = useState<string>("");
   const [loading, setLoading] = useState(false);
 
-  const sendEmail = (e:any) => {
+  const sendEmail = (e:React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (input.length != 0) {
+    if (input.length != 0 && form.current) {
       setLoading(true);
       emailjs
         .sendForm(
@@ -107,7 +107,7 @@ const Contact = (props: Props) => {
               ></textarea>
             </div>
 
-            <button className="btn" onClick={sendEmail}>
+            <button className="btn" onClick={(e:React.FormEvent<HTMLButtonElement>) => sendEmail(e)}>
               Send
             </button>
           </form>
