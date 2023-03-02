@@ -1,3 +1,4 @@
+import { calcLength } from "framer-motion";
 import Image from "next/image";
 import React, { useRef } from "react";
 
@@ -39,6 +40,9 @@ const Card = (props: Props) => {
   const resetCard = () => {
     card.current.style.transform = `rotateY(0) rotateX(0) scale(1)`;
     card.current.children[1].style.transform = `rotateY(0) rotateX(0) scale(1)`;
+    card.current.children[0].style.transform = `rotateY(0) rotateX(0) scale(1)`;
+
+    console.log("reset");
 
   }
 
