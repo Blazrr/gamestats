@@ -1,8 +1,8 @@
 import internal from "stream";
 
 export interface Apex{
-global:global
-legends:legends
+global?:global
+legends?:legends
 }
 
 interface global{

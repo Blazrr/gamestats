@@ -1,30 +1,29 @@
 import React, { useEffect, useState } from "react";
-import ColorPicker from "../Edit/ColorPicker";
-import { toast } from "react-toastify";
 import { changeUser } from "slices/userSlice";
 import { supabase } from "lib/supabaseClient";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import { AnimatePresence, motion } from "framer-motion";
-import Image from "next/image";
+import { periph } from "utils/setup";
+import { peripheral } from "utils/user";
 
 type Props = {};
 
 const SetPeriph = (props: Props) => {
   const user = useSelector((state: RootState) => state.user.value);
-  const [name, setName] = useState();
+  const [name, setName] = useState<string>();
   const dispatch = useDispatch();
-  const [periph, setPeriph] = useState("Choose");
-  const [link, setLink] = useState();
-  const [open, setOpen] = useState(false);
-  const [curr, setCurr] = useState<any>();
+  const [periph, setPeriph] = useState<string>("Choose");
+  const [link, setLink] = useState<string>();
+  const [open, setOpen] = useState<boolean>(false);
+  const [curr, setCurr] = useState<peripheral>();
 
-  const handleSubmit = async (p:any) => {
-    const tmp = user.setup.filter((item: any) => {
+  const handleSubmit = async (p: string ) => {
+    const tmp = user.setup?.filter((item: periph) => {
       return item.periph != periph;
     });
-    if (p != "del") {
-      tmp.push({ periph: periph, link: link, name: name });
+    if (p != "DEL") {
+      tmp?.push({ periph: periph, link: link, name: name });
     }
     const { error } = await supabase
       .from("profiles")
@@ -39,12 +38,12 @@ const SetPeriph = (props: Props) => {
     setOpen(false);
   };
 
-  const handleChange = (e: any) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPeriph(e.target.value);
-    const tmp = user.setup.filter((item: any) => {
+    const tmp = user.setup?.filter((item: peripheral) => {
       return item.periph == e.target.value;
     });
-    setCurr(tmp[0]);
+    if (tmp != undefined) setCurr(tmp[0]);
   };
 
   return (
@@ -63,7 +62,7 @@ const SetPeriph = (props: Props) => {
               {periph != "Choose" && (
                 <>
                   {curr != undefined && (
-                    <button className="btn" onClick={() => handleSubmit("del")}>
+                    <button className="btn" onClick={() => handleSubmit("DEL")}>
                       delete
                     </button>
                   )}
@@ -72,7 +71,7 @@ const SetPeriph = (props: Props) => {
                     <input
                       type="text"
                       className="input max-w-[300px] mt-2"
-                      onChange={(e: any) => setName(e.target.value)}
+                      onChange={(e:React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                       id="name"
                       placeholder={curr?.name}
                     />
@@ -83,7 +82,7 @@ const SetPeriph = (props: Props) => {
                     <input
                       type="text"
                       className="input max-w-[300px] mt-2"
-                      onChange={(e: any) => setLink(e.target.value)}
+                      onChange={(e:React.ChangeEvent<HTMLInputElement>) => setLink(e.target.value)}
                       id="link"
                       placeholder={curr?.link}
                     />
@@ -96,7 +95,7 @@ const SetPeriph = (props: Props) => {
                 <select
                   value={periph}
                   className="btn text-center mt-4"
-                  onChange={(e: any) => handleChange(e)}
+                  onChange={(e :React.ChangeEvent<HTMLSelectElement>) => handleChange(e)}
                 >
                   <option value="Choose">Chose a Peripheral</option>
                   <option value="mouse">Mouse</option>
@@ -105,7 +104,7 @@ const SetPeriph = (props: Props) => {
                 </select>
               </div>
 
-              <button className="btn mt-4" onClick={handleSubmit}>
+              <button className="btn mt-4" onClick={() =>handleSubmit("ADD")}>
                 Confirm
               </button>
             </div>

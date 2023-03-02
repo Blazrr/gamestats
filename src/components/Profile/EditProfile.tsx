@@ -29,7 +29,7 @@ const EditProfile = (props: Props) => {
       const { data, error } = await supabase.storage
         .from("avatars")
         .list(user.id);
-      let tmp: any = [];
+      let tmp: string[] = [];
 
       data?.map((item) => {
         if (!`${avatar}`.includes(item.name)) {

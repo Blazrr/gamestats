@@ -2,7 +2,7 @@ import { createServerSupabaseClient } from "@supabase/auth-helpers-nextjs";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
 import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, calcLength, motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import NameNeeded from "@/components/Profile/NameNeeded";
@@ -83,8 +83,9 @@ const Profile = ({}: Props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const supabase = createServerSupabaseClient(ctx);
+  console.log(ctx)
   const {
     data: { session },
   } = await supabase.auth.getSession();

@@ -18,7 +18,7 @@ const SetValorant = ({ showDiv }: Props) => {
   const dispatch = useDispatch();
   const [color, setColor] = useState(user?.lol?.bgColor || "#000000");
   const [server, setServer] = useState("eu");
-  const [tagline, setTagline] = useState(user.valorant.tagline)
+  const [tagline, setTagline] = useState<string>(user.valorant.tagline)
 
   const [open, setOpen] = useState(false);
 
@@ -103,7 +103,7 @@ const SetValorant = ({ showDiv }: Props) => {
                 <input
                   type="text"
                   className="input max-w-[300px] mt-2"
-                  onChange={(e:any) => setTagline(e.target.value)}
+                  onChange={(e:React.ChangeEvent<HTMLInputElement>) => setTagline(e.target.value)}
                   value={tagline || ""}
                 />
               </div>
@@ -112,7 +112,7 @@ const SetValorant = ({ showDiv }: Props) => {
                 <select
                   value={server}
                   className="btn text-center"
-                  onChange={(e: any) => setServer(e.target.value)}
+                  onChange={(e :React.ChangeEvent<HTMLSelectElement>) => setServer(e.target.value)}
                 >
                   <option value="eu">EUW</option>
                   <option value="na">NA</option>

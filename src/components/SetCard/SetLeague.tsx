@@ -87,7 +87,7 @@ const SetLeague = ({ showDiv }: Props) => {
               <input
                 type="text"
                 className="input max-w-[300px] mt-2"
-                onChange={(e) => setUsername(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
                 value={username || ""}
               />
                <div className="flex flex-col mt-4">
@@ -95,7 +95,7 @@ const SetLeague = ({ showDiv }: Props) => {
                 <select
                   value={server}
                   className="btn text-center"
-                  onChange={(e: any) => setServer(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setServer(e.target.value)}
                 >
                   <option value="EUW">EUW</option>
                   <option value="NA">NA</option>

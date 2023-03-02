@@ -1,26 +1,26 @@
 export interface lol {
-  bgColor: string;
-  summonerName: string;
-  server:string;
+  bgColor?: string;
+  summonerName?: string;
+  server?:string;
 }
 
 
  interface peripheral{
-  periph:string;
-  link:string;
-  name:string;
+  periph?:string;
+  link?:string;
+  name?:string;
 }
  interface apex {
-  bgColor: string;
-  username: string;
-  platform: string;
-  uid:string;
+  bgColor?: string;
+  username?: string;
+  platform?: string;
+  uid?:string;
 }
  interface valorant{
-  bgColor: string;
-  username: string;
-  server: string;
-  tagline:string;
+  bgColor?: string;
+  username?: string;
+  server?: string;
+  tagline?:string;
 
 }
 export interface user {
@@ -32,7 +32,7 @@ export interface user {
   updated_at?: null;
   username?: string;
   website?: string;
-  apex: apex;
-  setup: peripheral[];
-  valorant
+  apex?: apex;
+  setup?: peripheral[];
+  valorant?:any
 }
