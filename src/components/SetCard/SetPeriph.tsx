@@ -19,11 +19,11 @@ const SetPeriph = (props: Props) => {
   const [curr, setCurr] = useState<peripheral>();
 
   const handleSubmit = async (p: string ) => {
-    const tmp = user.setup.filter((item: periph) => {
+    const tmp = user.setup?.filter((item: periph) => {
       return item.periph != periph;
     });
     if (p != "DEL") {
-      tmp.push({ periph: periph, link: link, name: name });
+      tmp?.push({ periph: periph, link: link, name: name });
     }
     const { error } = await supabase
       .from("profiles")
@@ -40,10 +40,10 @@ const SetPeriph = (props: Props) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setPeriph(e.target.value);
-    const tmp = user.setup.filter((item: peripheral) => {
+    const tmp = user.setup?.filter((item: peripheral) => {
       return item.periph == e.target.value;
     });
-    setCurr(tmp[0]);
+    if (tmp != undefined) setCurr(tmp[0]);
   };
 
   return (

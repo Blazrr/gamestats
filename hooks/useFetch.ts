@@ -23,7 +23,7 @@ const useFetch = (url:string) => {
         }
 
         fetchData()
-    },[])
+    },)
 
     return {loading, error, data}
 

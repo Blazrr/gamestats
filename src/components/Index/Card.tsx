@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 type Props = {};
 
 const Card = (props: Props) => {
-  const card = useRef<HTMLDivElement | any >(null);
+  const card = useRef< HTMLDivElement | any>(null);
   const moveCard: React.MouseEventHandler<HTMLDivElement> = (e) => {
   
 
@@ -24,8 +24,9 @@ const Card = (props: Props) => {
     let glowX = x / cardRect.width * 100
     let glowY = y / cardRect.height * 100
 
+        card.current.children[0].style.transform  = `rotateY(${angleY}deg) rotateX(${angleX}deg) scale(1.1)`;
 
-    card.current.children[0].style.transform  = `rotateY(${angleY}deg) rotateX(${angleX}deg) scale(1.1)`;
+
     card.current.children[1].style.transform = `rotateY(${angleY}deg) rotateX(${angleX}deg) scale(1.1)`;
     card.current.children[1].style.background = `radial-gradient(circle at ${glowX} ${glowY}, rgb(184,196,211), transparent)`
     }

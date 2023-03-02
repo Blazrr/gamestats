@@ -2,7 +2,7 @@ import React, { useRef,useEffect } from "react";
 import { text } from "stream/consumers";
 
 type Props = {
-    textValue: string 
+    textValue?: string 
 
 };
 
