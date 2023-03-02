@@ -18,7 +18,7 @@ const Blob = (props: Props) => {
         );
       }
     };
-    //@ts-ignore
+        //@ts-ignore
     window.addEventListener("pointermove",  mouseMove);
     return () => {
     //@ts-ignore
