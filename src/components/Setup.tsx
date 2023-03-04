@@ -15,7 +15,7 @@ const Setup = ({user}: Props) => {
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }} 
     >
-    {user.setup.map((item,id) => {
+    {user.setup?.map((item,id) => {
       return(
         <div key={id} className="flex space-x-4 items-center ">
           <span>{item.periph} </span>

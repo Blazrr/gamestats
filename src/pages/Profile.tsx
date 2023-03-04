@@ -22,6 +22,7 @@ const Profile = ({}: Props) => {
   const supabase = useSupabaseClient();
   const router = useRouter();
   const user = useSelector((state: RootState) => state.user.value);
+  console.log(user)
 
   const signOut = async () => {
     await supabase.auth.signOut();
