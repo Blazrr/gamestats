@@ -1,10 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { platform } from "os";
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { RootState } from "store";
+
 import { Apex } from "utils/apex";
 import { user } from "utils/user";
 import SetApex from "../SetCard/SetApex";
@@ -22,7 +20,7 @@ const Apex = ({ showDiv, user }: Props) => {
     const fetchData = async () => {
       const response = await fetch(
         `
-        https://api.mozambiquehe.re/bridge?auth=${process.env.NEXT_PUBLIC_APEX_KEY}&uid=${user?.apex?.uid}&platform=${user?.apex?.platform}`
+        https://api.mozambiquehe.re/bridge?auth=${process.env.NEXT_PUBLIC_APEX_KEY}&uid=${user.apex?.uid}&platform=${user.apex?.platform}`
       );
       const tmp = await response.json();
       setData(tmp);
@@ -32,14 +30,13 @@ const Apex = ({ showDiv, user }: Props) => {
     }
   }, [user]);
 
-
   return (
     <>
       {data?.legends != undefined && (
         <AnimatePresence>
           <motion.div
             className="p-4 rounded-lg flex items-center w-[240px] md:w-[300px] justify-between "
-            style={{ backgroundColor: user?.apex?.bgColor }}
+            style={{ backgroundColor: user.apex?.bgColor }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
