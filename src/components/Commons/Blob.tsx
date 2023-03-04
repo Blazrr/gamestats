@@ -7,21 +7,19 @@ const Blob = (props: Props) => {
   const blob = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const mouseMove: React.PointerEventHandler<Window> = (e): void => {
+    const mouseMove = (e: PointerEvent): void => {
       if (blob.current?.animate != null) {
         blob.current.animate(
           {
-            left: `${e?.pageX}px`,
-            top: `${e?.pageY}px`,
+            left: `${e.pageX}px`,
+            top: `${e.pageY}px`,
           },
           { duration: 3000, fill: "forwards" }
         );
       }
     };
-    // @ts-ignore
     window.addEventListener("pointermove", mouseMove);
     return () => {
-          // @ts-ignore
       window.removeEventListener("pointermove", mouseMove);
     };
   }, []);
