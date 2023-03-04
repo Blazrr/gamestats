@@ -34,5 +34,5 @@ export interface user {
   website?: string;
   apex?: apex;
   setup?: peripheral[];
-  valorant?:any
+  valorant?:valorant
 }

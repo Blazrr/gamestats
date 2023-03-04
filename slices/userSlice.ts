@@ -5,11 +5,11 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 
 export interface CounterState {
-  value: any;
+  value: user;
 }
 
 const initialState: CounterState = {
-  value: [],
+  value: {},
   
 };
 
@@ -18,10 +18,10 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    initUser: (state, action: PayloadAction<number>) => {
+    initUser: (state, action: PayloadAction<user>) => {
       state.value = action.payload;
     },
-    changeUser: (state, action: PayloadAction<number>) => {
+    changeUser: (state, action: PayloadAction<user>) => {
       state.value = action.payload;
     }
 
