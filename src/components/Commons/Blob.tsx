@@ -7,7 +7,7 @@ const Blob = (props: Props) => {
   const blob = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const mouseMove: React.PointerEventHandler<Window> = (e) => {
+    const mouseMove: React.PointerEventHandler<Window> = (e): void => {
       if (blob.current?.animate != null) {
         blob.current.animate(
           {
@@ -18,10 +18,10 @@ const Blob = (props: Props) => {
         );
       }
     };
-    //@ts-ignore
+    // @ts-ignore
     window.addEventListener("pointermove", mouseMove);
     return () => {
-      //@ts-ignore
+          // @ts-ignore
       window.removeEventListener("pointermove", mouseMove);
     };
   }, []);
