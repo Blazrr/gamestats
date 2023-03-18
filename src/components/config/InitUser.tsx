@@ -10,6 +10,7 @@ type Props = {}
 const InitUser = (props: Props) => {
     const dispatch = useDispatch();
     const session = useSession();
+    console.log(session);
     const user = useSelector((state: RootState) => state.user.value);
     useEffect(() => {
       const fetchData = async () => {
@@ -17,10 +18,12 @@ const InitUser = (props: Props) => {
           .from("profiles")
           .select()
           .eq("id", session?.user.id);
+          console.log("fetched");
         if (data) {
           dispatch(initUser(data[0]));
         }
         if (error) {
+          console.log(error)
         }
       };
       if (user.username == undefined ) {
