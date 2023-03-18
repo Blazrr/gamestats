@@ -17,12 +17,12 @@ const Valorant = ({ user }: Props) => {
     const fetchData = async () => {
       const response = await fetch(
         `
-            https://api.henrikdev.xyz/valorant/v1/account/${user.valorant.username}/${user.valorant.tagline}`
+            https://api.henrikdev.xyz/valorant/v1/account/${user.valorant?.username}/${user.valorant?.tagline}`
       );
       const tmp = await response.json();
       setData(tmp.data);
       const mmrResponse =
-        await fetch(`https://api.henrikdev.xyz/valorant/v1/mmr/${user.valorant.server}/${user.valorant.username}/${user.valorant.tagline}
+        await fetch(`https://api.henrikdev.xyz/valorant/v1/mmr/${user.valorant?.server}/${user.valorant?.username}/${user.valorant?.tagline}
           `);
       const mmrTmp = await mmrResponse.json();
       setMmrData(mmrTmp.data);
@@ -38,7 +38,7 @@ const Valorant = ({ user }: Props) => {
         <AnimatePresence>
           <motion.div
             className="p-4 rounded-lg flex items-center w-[240px] md:w-[300px] justify-between "
-            style={{ backgroundColor: user.valorant.bgColor }}
+            style={{ backgroundColor: user.valorant?.bgColor }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -64,7 +64,7 @@ const Valorant = ({ user }: Props) => {
             <h2 className="">Lvl.{data.account_level}</h2>
             <a
               target="_blank"
-              href={`https://tracker.gg/valorant/profile/riot/${user.valorant.username}%23${user.valorant.tagline}/overview`}
+              href={`https://tracker.gg/valorant/profile/riot/${user.valorant?.username}%23${user.valorant?.tagline}/overview`}
               rel="noopener noreferrer"
               className="underline "
             >

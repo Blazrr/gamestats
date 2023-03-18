@@ -1,5 +1,5 @@
 export interface periph{
-    link:string;
-    name:string;
-    periph:string;
+    link?:string;
+    name?:string;
+    periph?:string;
 }

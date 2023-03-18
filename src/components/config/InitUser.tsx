@@ -23,7 +23,7 @@ const InitUser = (props: Props) => {
         if (error) {
         }
       };
-      if (user?.length == 0 ) {
+      if (user.username == undefined ) {
         fetchData();
       }
     }, [session,[]]);
