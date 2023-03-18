@@ -14,11 +14,11 @@ type Props = { showDiv: boolean };
 
 const SetValorant = ({ showDiv }: Props) => {
   const user = useSelector((state: RootState) => state.user.value);
-  const [username, setUsername] = useState(user.valorant.username);
+  const [username, setUsername] = useState(user.valorant?.username);
   const dispatch = useDispatch();
   const [color, setColor] = useState(user?.lol?.bgColor || "#000000");
   const [server, setServer] = useState("eu");
-  const [tagline, setTagline] = useState<string>(user.valorant.tagline)
+  const [tagline, setTagline] = useState(user.valorant?.tagline)
 
   const [open, setOpen] = useState(false);
 

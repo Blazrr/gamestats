@@ -13,9 +13,10 @@ import Image from "next/image";
 import Games from "../Games";
 import Socials from "../Socials";
 import Setup from "../Setup";
+import { user } from "utils/user";
 
 type Props = {
-  user:any
+  user:user
 };
 
 const CurrCard = ({user}: Props) => {

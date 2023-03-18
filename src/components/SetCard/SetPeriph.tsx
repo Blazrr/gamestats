@@ -21,10 +21,11 @@ const SetPeriph = (props: Props) => {
   const handleSubmit = async (p: string ) => {
     const tmp = user.setup?.filter((item: periph) => {
       return item.periph != periph;
-    });
+    }) || []
     if (p != "DEL") {
       tmp?.push({ periph: periph, link: link, name: name });
     }
+    console.log(tmp,periph,link)
     const { error } = await supabase
       .from("profiles")
       .update({ setup: tmp })
@@ -45,6 +46,7 @@ const SetPeriph = (props: Props) => {
     });
     if (tmp != undefined) setCurr(tmp[0]);
   };
+  console.log(curr)
 
   return (
     <>
@@ -98,9 +100,9 @@ const SetPeriph = (props: Props) => {
                   onChange={(e :React.ChangeEvent<HTMLSelectElement>) => handleChange(e)}
                 >
                   <option value="Choose">Chose a Peripheral</option>
-                  <option value="mouse">Mouse</option>
-                  <option value="keyboard">Keyboard</option>
-                  <option value="screen">Screen</option>
+                  <option value="mouse 🖱️">Mouse 🖱️</option>
+                  <option value="keyboard ⌨️">Keyboard ⌨️</option>
+                  <option value="screen 🖥️">Screen 🖥️</option>
                 </select>
               </div>
 

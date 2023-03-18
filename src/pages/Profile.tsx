@@ -15,6 +15,7 @@ import SetApex from "@/components/SetCard/SetApex";
 import SetPeriph from "@/components/SetCard/SetPeriph";
 import SetValorant from "@/components/SetCard/SetValorant";
 import SetColor from "@/components/SetCard/SetColor";
+import EditCard from "@/components/Profile/EditCard";
 
 type Props = {};
 
@@ -22,16 +23,18 @@ const Profile = ({}: Props) => {
   const supabase = useSupabaseClient();
   const router = useRouter();
   const user = useSelector((state: RootState) => state.user.value);
-
+  const [currTab, setCurrTab] = useState("EditCard");
   const signOut = async () => {
     await supabase.auth.signOut();
     router.push("/");
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(`https://gamestats-snowy.vercel.app/${user.username}`);
+    navigator.clipboard.writeText(
+      `https://gamestats-snowy.vercel.app/${user.username}`
+    );
   };
-  
+
   return (
     <>
       <AnimatePresence>
@@ -45,31 +48,37 @@ const Profile = ({}: Props) => {
             <NameNeeded />
           ) : (
             <>
-            <div className="flex flex-col items-center">
-              <h1 className="text-center text-2xl">
-                Welcome back {user.username}
-              </h1>
-              <div className="mt-4 bg-slate-300 p-2 rounded space-x-2 flex items-center ">
-                <span className="text-black ">https://gamestats-snowy.vercel.app/{user.username}</span>
-                <button className="btn" onClick={handleCopy}>Copy</button>
+              <div className="flex flex-col items-center">
+                <h1 className="text-center text-2xl">
+                  Welcome back {user.username}
+                </h1>
+                <div className="mt-4 bg-slate-300 p-2 rounded space-x-2 flex items-center ">
+                  <span className="text-black ">
+                    https://gamestats-snowy.vercel.app/{user.username}
+                  </span>
+                  <button className="btn" onClick={handleCopy}>
+                    Copy
+                  </button>
+                </div>
+                <div className="space-x-8 mt-8">
+                  <button
+                    className={`btn ${currTab === "EditCard" && "border-white"}`}
+                    onClick={() => setCurrTab("EditCard")}
+                  >
+                    Edit Card
+                  </button>
+                  <button
+                    className={`btn ${currTab === "EditProfile" && "border-white"}`}
+                    onClick={() => setCurrTab("EditProfile")}
+                  >
+                    Edit Profile
+                  </button>
+                </div>
               </div>
-              <EditProfile/>
-             
-            </div>
-            <h3 className="text-center text-3xl mt-6">Edit your Game Cards</h3>
-             <div className="mt-8 flex gap-6 flex-wrap items-center justify-center">
-             {/* <SetLeague showDiv={true} /> */}
-             <SetApex showDiv={true}/>
-             <SetValorant showDiv={true}/>
-           </div>
-             <h3 className="text-center text-3xl mt-6">Edit your Setup Cards</h3>
-             <SetPeriph/>
-             <h3 className="text-center text-3xl mt-6">Edit your Card Color</h3>
-             <SetColor/>
+              {currTab === "EditCard" && <EditCard />}
+              {currTab === "EditProfile" && <EditProfile />}
 
-           <CurrCard user={user} />
-
-           </>
+            </>
           )}
 
           <div>
@@ -85,7 +94,6 @@ const Profile = ({}: Props) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const supabase = createServerSupabaseClient(ctx);
-  console.log(ctx)
   const {
     data: { session },
   } = await supabase.auth.getSession();
