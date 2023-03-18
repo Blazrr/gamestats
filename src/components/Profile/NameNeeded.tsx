@@ -11,7 +11,6 @@ const NameNeeded = (props: Props) => {
   const [error, setError] = useState("");
   const user = useSelector((state: RootState) => state.user.value);
   const dispatch = useDispatch();
-  console.log(user)
 
   const handleSubmit = async () => {
     const { error } = await supabase
@@ -20,7 +19,6 @@ const NameNeeded = (props: Props) => {
       .eq("id", user.id);
     if (error) {
       setError(error.message);
-      console.log(error);
       alert("tu dois avoir au moins 3 lettres");
       return;
     }

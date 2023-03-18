@@ -13,7 +13,6 @@ type Props = {
 }
 
 const Games = ({user}: Props) => {
-  console.log(user);
 
   return (
     <AnimatePresence>
