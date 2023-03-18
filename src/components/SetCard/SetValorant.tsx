@@ -66,7 +66,7 @@ const SetValorant = ({ showDiv }: Props) => {
 
   return (
     <div className="flex flex-col">
-      {showDiv && (
+ 
         <div className="relative h-16 w-16" onClick={() => setOpen(true)}>
           <Image
             src="/valorant.png"
@@ -76,7 +76,7 @@ const SetValorant = ({ showDiv }: Props) => {
             className="rounded cursor-pointer hover:scale-105 transition-all"
           />
         </div>
-      )}
+
 
       <AnimatePresence>
         {open && (

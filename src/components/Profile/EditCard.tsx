@@ -6,6 +6,7 @@ import SetApex from '../SetCard/SetApex'
 import SetValorant from '../SetCard/SetValorant'
 import { RootState } from 'store'
 import { useSelector } from 'react-redux'
+import SetGithub from '../SetCard/setGithub'
 
 type Props = {}
 
@@ -26,6 +27,12 @@ const EditCard = (props: Props) => {
                     Edit your Setup Cards
                   </h3>
                   <SetPeriph />
+                  <h3 className="text-center text-3xl mt-6">
+                    Edit your Socials Color
+                  </h3>
+                  <div className="mt-8 flex gap-6 flex-wrap items-center justify-center">
+                    <SetGithub/>
+                  </div>
                   <h3 className="text-center text-3xl mt-6">
                     Edit your Card Color
                   </h3>

@@ -25,7 +25,6 @@ const SetPeriph = (props: Props) => {
     if (p != "DEL") {
       tmp?.push({ periph: periph, link: link, name: name });
     }
-    console.log(tmp,periph,link)
     const { error } = await supabase
       .from("profiles")
       .update({ setup: tmp })
