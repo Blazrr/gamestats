@@ -17,7 +17,6 @@ const InitUser = (props: Props) => {
           .from("profiles")
           .select()
           .eq("id", session?.user.id);
-          console.log("fetched");
         if (data) {
           dispatch(initUser(data[0]));
         }

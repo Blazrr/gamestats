@@ -1,6 +1,7 @@
 import { AnimatePresence ,motion} from 'framer-motion'
 import React from 'react'
 import { user } from 'utils/user'
+import Github from './SocialCards/Github'
 
 type Props = {
   user:user
@@ -15,7 +16,8 @@ const Socials = ({user}: Props) => {
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }} 
     >
-    <h1>Socials</h1>
+    <h1>Socials</h1> 
+    {user?.github != null &&  <Github user={user}/>  }
   </motion.div>
     </AnimatePresence>
   )

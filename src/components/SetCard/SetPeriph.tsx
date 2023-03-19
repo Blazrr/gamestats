@@ -45,7 +45,6 @@ const SetPeriph = (props: Props) => {
     });
     if (tmp != undefined) setCurr(tmp[0]);
   };
-  console.log(curr)
 
   return (
     <>

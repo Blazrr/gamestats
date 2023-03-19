@@ -35,5 +35,5 @@ export interface user {
   apex?: apex;
   setup?: peripheral[];
   valorant?:valorant;
-  github:any
+  github?:any
 }

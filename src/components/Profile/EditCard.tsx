@@ -6,8 +6,7 @@ import SetApex from '../SetCard/SetApex'
 import SetValorant from '../SetCard/SetValorant'
 import { RootState } from 'store'
 import { useSelector } from 'react-redux'
-import SetGithub from '../SetCard/setGithub'
-
+import SetGithub from '../SetCard/SetGithub'
 type Props = {}
 
 const EditCard = (props: Props) => {
