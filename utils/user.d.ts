@@ -21,7 +21,11 @@ export interface lol {
   username?: string;
   server?: string;
   tagline?:string;
+}
 
+interface github {
+  bgColor?: string;
+  username?: number;
 }
 export interface user {
   avatar_url?: string;

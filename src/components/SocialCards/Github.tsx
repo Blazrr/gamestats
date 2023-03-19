@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { github } from "utils/github.t";
 import { user } from "utils/user";
 
 type Props = {
@@ -8,7 +9,7 @@ type Props = {
 };
 
 const Github = ({ user }: Props) => {
-  const [data, setData] = useState<any>();
+  const [data, setData] = useState<github>();
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
