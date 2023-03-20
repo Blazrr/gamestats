@@ -30,6 +30,7 @@ const Navbar = ({}: Props) => {
 
     setPrevScrollPos(currentScrollPos);
   };
+  console.log(router)
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -64,13 +65,13 @@ const Navbar = ({}: Props) => {
                 </div>
 
                 <div className="hidden md:block space-x-10 text-xl">
-                  <Link href={"/"} className="NavLinks">
+                  <Link href={"/"} className={` ${router == "/" && "underline text-blue-500"}NavLinks`}>
                     Home
                   </Link>
-                  <Link href={"/About"} className="NavLinks">
+                  <Link href={"/About"} className={` ${router == "/About" && "underline text-blue-500"}NavLinks`}>
                     About
                   </Link>
-                  <Link href={"/Contact"} className="NavLinks">
+                  <Link href={"/Contact"} className={` ${router == "/Contact" && "underline text-blue-500"}NavLinks`}>
                     Contact
                   </Link>
                 </div>

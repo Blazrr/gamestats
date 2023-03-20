@@ -25,7 +25,6 @@ const Github = ({ user }: Props) => {
     }
   }, [user]);
 
-  console.log(data);
 
   return (
     <>
