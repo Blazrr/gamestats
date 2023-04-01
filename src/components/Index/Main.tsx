@@ -10,7 +10,7 @@ type Props = {};
 
 const Main = (props: Props) => {
   return (
-    <div>
+    <div className="pb-32">
       <Header/>
       <div className="mt-12 flex justify-center">
       <Card/>
