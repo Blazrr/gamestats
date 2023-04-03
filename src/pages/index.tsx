@@ -31,8 +31,11 @@ export default function Home() {
           
           <GlitchedTitle textValue="GeeKard"/>
           <Main />
-
+          <h4 className="text-white text-center text-5xl font-semibold">App still in Devlopment</h4>
+          <p className="pt-44"></p>
           <Footer/>
+
+
         </motion.div>
       </AnimatePresence>
     </div>

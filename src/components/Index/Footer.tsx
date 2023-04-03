@@ -10,7 +10,7 @@ type Props = {}
 const Footer = (props: Props) => {
     const router = useRouter().route;
   return (
-    <div className='bg-[#1A202C] !w-full absolute !bottom-0 left-0 mt-16 p-8 flex justify-between items-center'>
+    <div className='bg-[#1A202C] !w-full absolute !bottom-0  left-0  p-8 flex justify-between items-center'>
         <div>
             <Link href="/Contact" className='btn'>Contact Us</Link>
         </div>
